@@ -2,15 +2,18 @@ using System;
 using Code.Scripts.StateMachine;
 using Code.Scripts.StateMachine.BtNodes;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Code.Scripts.Enemy
 {
     [RequireComponent(typeof(StateMachineRunner))]
-    public class SimpleEnemy : MonoBehaviour
+    public class LavaMultiped : MonoBehaviour
     {
         private StateMachineRunner _stateMachineRunner;
+        
         [SerializeField] private Transform playerTransform;
         [SerializeField] private Transform[] patrolPath;
+        private NavMeshAgent _navMeshAgent;
 
         public float angerDistance = 10;
         public float attackDistance = 2;
@@ -18,7 +21,8 @@ namespace Code.Scripts.Enemy
         private void Awake()
         {
             _stateMachineRunner = GetComponent<StateMachineRunner>();
-
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            
             var state = new RunBtState(BuildBehaviourTree());
             _stateMachineRunner.StateMachine = new StateMachine.StateMachine(state);
         }
@@ -28,7 +32,8 @@ namespace Code.Scripts.Enemy
             var context = new EnemyBTContext()
             {
                 Player = playerTransform,
-                Self = this
+                Self = this,
+                NavMeshAgent = _navMeshAgent
             };
             return new RepeatNode(new AlwaysSuccessNode(
                 new SequenceNode("MainSequence",
