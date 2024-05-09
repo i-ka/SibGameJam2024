@@ -167,11 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  patrolPath:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolPath: []
   angerDistance: 20
   attackDistance: 2
 --- !u!195 &8306313373020185929

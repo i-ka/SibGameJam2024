@@ -23,10 +23,11 @@ namespace Code.Scripts.Enemy
 
         public BtNodeResult Tick()
         {
+            var player = _context.Hive.DetectedPlayer ?? _context.DetectedPlayer;
             if (!_context.DetectedPlayer)
                 return BtNodeResult.Failure();
             
-            var vectorToPlayer = _context.DetectedPlayer.transform.position - _context.Self.transform.position;
+            var vectorToPlayer = player.transform.position - _context.Self.transform.position;
             var sqrPlayerDistance = vectorToPlayer.sqrMagnitude;
             if (sqrPlayerDistance > Mathf.Pow(_angerDistance, 2))
             {
@@ -34,7 +35,7 @@ namespace Code.Scripts.Enemy
                 return BtNodeResult.Failure();
             }
 
-            _context.NavMeshAgent.SetDestination(_context.DetectedPlayer.transform.position);
+            _context.NavMeshAgent.SetDestination(player.transform.position);
             
             if (sqrPlayerDistance < Mathf.Pow(_attackDistance, 2))
             {
