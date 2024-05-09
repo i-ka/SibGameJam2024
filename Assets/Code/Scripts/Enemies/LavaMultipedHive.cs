@@ -9,7 +9,6 @@ public class LavaMultipedHive : MonoBehaviour
 {
     [SerializeField] private int totalMultipedsToSpawn = 8;
     [SerializeField] private LavaMultiped multipedPrefab;
-    [SerializeField] private float spawnRadius;
     [SerializeField] private float spawnPeriod;
     [SerializeField] private Transform[] _patrolNodes;
 
