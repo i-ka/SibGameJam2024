@@ -10,7 +10,7 @@ namespace Code.Scripts.Enemy
     public class LavaMultiped : MonoBehaviour
     {
         private StateMachineRunner _stateMachineRunner;
-        
+
         [SerializeField] private Transform playerTransform;
         [SerializeField] private Transform[] patrolPath;
         private NavMeshAgent _navMeshAgent;
@@ -22,9 +22,34 @@ namespace Code.Scripts.Enemy
         {
             _stateMachineRunner = GetComponent<StateMachineRunner>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
+
+            var context = new EnemyBTContext()
+            {
+                Player = playerTransform,
+                Self = this,
+                NavMeshAgent = _navMeshAgent
+            };
+
+            var chaseState = new RunBtState<EnemyBTContext>(
+                new SequenceNode("ChaseSequence",
+                    new WaitNode(1, "WaitBeforeChase"),
+                    new ChaseNode(context)
+                ), context);
+
+            var patrolState = new RunBtState<EnemyBTContext>(new RepeatNode(
+                new PatrolNode(context, patrolPath)
+            ), context);
             
-            var state = new RunBtState(BuildBehaviourTree());
-            _stateMachineRunner.StateMachine = new StateMachine.StateMachine(state);
+            var fightState = new RunBtState<EnemyBTContext>(new SequenceNode("AttackSequence",
+                new AttackNode(context),
+                new WaitNode(1)
+            ), context);
+            
+            var stateMachine = new StateMachine<EnemyBTContext>(patrolState, context);
+
+            stateMachine.AddTransition();
+
+            _stateMachineRunner.StateMachine = stateMachine;
         }
 
         private IBtNode BuildBehaviourTree()

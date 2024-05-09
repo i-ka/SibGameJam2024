@@ -1,12 +1,13 @@
 namespace Code.Scripts.StateMachine
 {
-    public class RunBtState : IState
+    public class RunBtState<T> : IState<T>
     {
         private readonly IBtNode _node;
 
-        public RunBtState(IBtNode node)
+        public RunBtState(IBtNode node, T blackBoard)
         {
             _node = node;
+            BlackBoard = blackBoard;
         }
 
         public void OnEnter()
@@ -14,19 +15,16 @@ namespace Code.Scripts.StateMachine
             _node.OnEnter();
         }
 
-        public StateResult Tick()
+        public void Tick()
         {
-            var nodeResult = _node.Tick();
-
-            if (nodeResult.Type == BtResultType.StateTransition)
-                return StateResult.ChangeState(nodeResult.TargetState);
-
-            return StateResult.Running();
+            _node.Tick();
         }
 
         public void OnExit()
         {
             _node.OnExit();
         }
+
+        public T BlackBoard { get; }
     }
 }

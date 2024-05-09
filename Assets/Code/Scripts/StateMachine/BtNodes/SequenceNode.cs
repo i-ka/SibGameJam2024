@@ -45,11 +45,6 @@ namespace Code.Scripts.StateMachine.BtNodes
                 }
                 case BtResultType.Running:
                     return BtNodeResult.Running();
-                case BtResultType.StateTransition:
-                {
-                    CurrentNode.OnExit();
-                    return BtNodeResult.ChangeState(currentNodeResult.TargetState);
-                }
                 case BtResultType.NotRun:
                     break;
                 default:
