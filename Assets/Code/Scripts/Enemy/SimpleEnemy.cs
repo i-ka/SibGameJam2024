@@ -39,12 +39,9 @@ namespace Code.Scripts.Enemy
                 new SequenceNode(
                     new PatrolNode(context, Array.Empty<Transform>()),
                     new ChaseNode(context),
-                    new AlwaysSuccessNode(new RepeatNode(
-                            new SequenceNode(
-                                new AttackNode(context),
-                                new WaitNode(1)
-                            )
-                        )
+                    new SequenceNode(
+                        new AttackNode(context),
+                        new WaitNode(1)
                     )
                 )
             );
