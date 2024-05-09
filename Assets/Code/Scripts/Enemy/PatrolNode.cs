@@ -21,6 +21,8 @@ namespace Code.Scripts.Enemy
         {
             _currentPathIndex = 0;
             _isStarted = false;
+            _context.NavMeshAgent.isStopped = false;
+            Debug.Log("Start patrol");
         }
 
         public BtNodeResult Tick()
@@ -33,7 +35,11 @@ namespace Code.Scripts.Enemy
                 Debug.DrawRay(_context.Self.transform.position, directionToPlayer, Color.green);
                 var hit = Physics.Raycast(_context.Self.transform.position, directionToPlayer, out var hitInfo);
                 if (hit && hitInfo.transform == _context.Player)
+                {
+                    _context.DetectedPlayer = hitInfo.transform;
+                    _context.NavMeshAgent.isStopped = true;
                     return BtNodeResult.Success();
+                }
             }
 
             if (_path?.Length > 0)
@@ -58,6 +64,7 @@ namespace Code.Scripts.Enemy
 
         public void OnExit()
         {
+            Debug.Log("Stop patrol");
         }
     }
 }

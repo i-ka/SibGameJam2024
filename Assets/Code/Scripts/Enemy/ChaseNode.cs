@@ -14,6 +14,7 @@ namespace Code.Scripts.Enemy
         
         public void OnEnter()
         {
+            Debug.Log("Start chase");
         }
 
         public BtNodeResult Tick()
@@ -22,6 +23,7 @@ namespace Code.Scripts.Enemy
             var sqrPlayerDistance = vectorToPlayer.sqrMagnitude;
             if (sqrPlayerDistance > Mathf.Pow(_context.Self.angerDistance, 2))
             {
+                _context.DetectedPlayer = null;
                 return BtNodeResult.Failure();
             }
 
@@ -37,6 +39,7 @@ namespace Code.Scripts.Enemy
 
         public void OnExit()
         {
+            Debug.Log("Stop chase");
         }
     }
 }

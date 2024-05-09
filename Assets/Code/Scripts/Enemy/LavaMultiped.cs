@@ -25,6 +25,7 @@ namespace Code.Scripts.Enemy
 
             var context = new EnemyBTContext()
             {
+                DetectedPlayer = null,
                 Player = playerTransform,
                 Self = this,
                 NavMeshAgent = _navMeshAgent
@@ -39,41 +40,27 @@ namespace Code.Scripts.Enemy
             var patrolState = new RunBtState<EnemyBTContext>(new RepeatNode(
                 new PatrolNode(context, patrolPath)
             ), context);
-            
-            var fightState = new RunBtState<EnemyBTContext>(new SequenceNode("AttackSequence",
+
+            var fightState = new RunBtState<EnemyBTContext>(new RepeatNode(new SequenceNode("AttackSequence",
                 new AttackNode(context),
                 new WaitNode(1)
-            ), context);
-            
+            )), context);
+
             var stateMachine = new StateMachine<EnemyBTContext>(patrolState, context);
 
-            stateMachine.AddTransition();
+            stateMachine.AddTransition(patrolState, chaseState,
+                ctx => ctx.DetectedPlayer);
+            
+            stateMachine.AddTransition(chaseState, patrolState,
+                ctx => !ctx.DetectedPlayer);
+            
+            stateMachine.AddTransition(chaseState, fightState,
+                _ => (playerTransform.position - transform.position).sqrMagnitude <= Mathf.Pow(attackDistance, 2));
+            
+            stateMachine.AddTransition(fightState, chaseState,
+                _ => (playerTransform.position - transform.position).sqrMagnitude < Mathf.Pow(attackDistance, 2));
 
             _stateMachineRunner.StateMachine = stateMachine;
-        }
-
-        private IBtNode BuildBehaviourTree()
-        {
-            var context = new EnemyBTContext()
-            {
-                Player = playerTransform,
-                Self = this,
-                NavMeshAgent = _navMeshAgent
-            };
-            return new RepeatNode(new AlwaysSuccessNode(
-                new SequenceNode("MainSequence",
-                    new PatrolNode(context, patrolPath),
-                    new SequenceNode("ChaseSequence",
-                        new WaitNode(1, "WaitBeforeChase"),
-                        new ChaseNode(context)
-                    ),
-                    new AlwaysSuccessNode(new RepeatNode(
-                        new SequenceNode("AttackSequence",
-                            new AttackNode(context),
-                            new WaitNode(1)
-                        )))
-                )
-            ), tag: "MainLoop");
         }
     }
 }
