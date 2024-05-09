@@ -44,8 +44,6 @@ namespace Code.Scripts.StateMachine.BtNodes
                     _node.OnEnter();
                     return BtNodeResult.Running();
                 }
-                case BtResultType.StateTransition:
-                    return BtNodeResult.ChangeState(result.TargetState);
                 case BtResultType.Running:
                 case BtResultType.NotRun:
                     return BtNodeResult.Running();

@@ -6,6 +6,5 @@ namespace Code.Scripts.StateMachine
         Success,
         Failure,
         Running,
-        StateTransition,
     }
 }

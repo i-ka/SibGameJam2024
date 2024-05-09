@@ -1,13 +1,41 @@
+using System;
+using System.Collections.Generic;
+
 namespace Code.Scripts.StateMachine
 {
-    public class StateMachine
+    public interface IStateMachine
     {
-        private readonly IState _initialState;
-        private IState _currentState;
+        public void Tick();
+    }
 
-        public StateMachine(IState initialState)
+    public class Transition<TBlackBoard>
+    {
+        private readonly Predicate<TBlackBoard> _monitor;
+        public IState<TBlackBoard> TargetState { get; }
+        public Transition(Predicate<TBlackBoard> monitor, IState<TBlackBoard> target)
+        {
+            _monitor = monitor;
+            TargetState = target;
+        }
+
+        public bool Evaluate(TBlackBoard blackBoard)
+        {
+            return _monitor(blackBoard);
+        }
+    }
+
+    public class StateMachine<TBlackBoard>: IStateMachine
+    {
+        private readonly IState<TBlackBoard> _initialState;
+        private readonly TBlackBoard _blackBoard;
+        private IState<TBlackBoard> _currentState;
+
+        private Dictionary<IState<TBlackBoard>, List<Transition<TBlackBoard>>> _transitions = new ();
+
+        public StateMachine(IState<TBlackBoard> initialState, TBlackBoard blackBoard)
         {
             _initialState = initialState;
+            _blackBoard = blackBoard;
         }
 
         public void Tick()
@@ -15,25 +43,42 @@ namespace Code.Scripts.StateMachine
             if (_currentState is null)
                 EnterState(_initialState);
 
-            var result = _currentState.Tick();
+            _currentState.Tick();
 
-            switch (result.Type)
-            {
-                case StateResultType.Transition:
-                    EnterState(result.TargetState);
-                    break;
-                case StateResultType.Running:
-                default:
-                    break;
-            }
+            ExecuteMonitor();
         }
 
-        public void SetState(IState state)
+        public void AddTransition(IState<TBlackBoard> from, IState<TBlackBoard> to, Predicate<TBlackBoard> condition)
+        {
+            if (_transitions.TryGetValue(from, out var existingTransitions))
+            {
+                existingTransitions.Add(new Transition<TBlackBoard>(condition, to));
+            }
+            else
+            {
+                _transitions.Add(from, new List<Transition<TBlackBoard>> { new (condition, to) });
+            } 
+        }
+
+        public void SetState(IState<TBlackBoard> state)
         {
             EnterState(state);
         }
 
-        private void EnterState(IState targetState)
+        private void ExecuteMonitor()
+        {
+            if (!_transitions.TryGetValue(_currentState, out var transitions)) return;
+            foreach (var transition in transitions)
+            {
+                if (transition.Evaluate(_blackBoard))
+                {
+                    EnterState(transition.TargetState);
+                    return;
+                }
+            }
+        }
+
+        private void EnterState(IState<TBlackBoard> targetState)
         {
             _currentState?.OnExit();
             targetState.OnEnter();
