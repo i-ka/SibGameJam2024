@@ -8,22 +8,19 @@ namespace Code.Scripts.Enemy
     {
         private readonly EnemyBTContext _context;
         private readonly float _angerDistance;
-        private readonly Transform[] _path;
         private int _currentPathIndex;
         private bool _isStarted;
 
-        public PatrolNode(EnemyBTContext context, float angerDistance, Transform[] path)
+        public PatrolNode(EnemyBTContext context, float angerDistance)
         {
             _context = context;
             _angerDistance = angerDistance;
-            _path = path;
         }
         
         public void OnEnter()
         {
             _currentPathIndex = 0;
             _isStarted = false;
-            _context.NavMeshAgent.isStopped = false;
             Debug.Log("Start patrol");
         }
 
@@ -39,24 +36,24 @@ namespace Code.Scripts.Enemy
                 if (hit && hitInfo.transform == _context.Player)
                 {
                     _context.DetectedPlayer = hitInfo.transform;
-                    _context.NavMeshAgent.isStopped = true;
                     return BtNodeResult.Success();
                 }
             }
 
-            if (_path?.Length > 0)
+            var path = _context.Hive.PatrolPath;
+            if (path?.Length > 0)
             {
                 if (!_isStarted)
                 {
-                    _context.NavMeshAgent.SetDestination(_path[_currentPathIndex].position);
+                    _context.NavMeshAgent.SetDestination(path[_currentPathIndex].position);
                     _isStarted = true;
                 }
-                if (_context.NavMeshAgent.remainingDistance <= 0.1f)
+                if (_context.NavMeshAgent.remainingDistance <= 0.2f)
                 {
                     _currentPathIndex++;
-                    if (_currentPathIndex >= _path.Length)
+                    if (_currentPathIndex >= path.Length)
                         _currentPathIndex = 0;
-                    _context.NavMeshAgent.SetDestination(_path[_currentPathIndex].position);
+                    _context.NavMeshAgent.SetDestination(path[_currentPathIndex].position);
                 }
             }
 

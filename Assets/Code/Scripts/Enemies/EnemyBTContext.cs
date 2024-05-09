@@ -17,5 +17,6 @@ namespace Code.Scripts.Enemy
     public class HiveContext
     {
         public Transform DetectedPlayer { get; set; }
+        public Transform[] PatrolPath { get; set; }
     }
 }

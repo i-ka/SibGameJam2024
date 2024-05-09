@@ -9,10 +9,10 @@ namespace Code.Scripts.Enemy
     [RequireComponent(typeof(StateMachineRunner))]
     public class LavaMultiped : MonoBehaviour
     {
+        public event Action<LavaMultiped> OnDestroyed;  
         private StateMachineRunner _stateMachineRunner;
 
         [SerializeField] private Transform playerTransform;
-        [SerializeField] private Transform[] patrolPath;
         private NavMeshAgent _navMeshAgent;
         private EnemyBTContext _btContext;
 
@@ -40,7 +40,7 @@ namespace Code.Scripts.Enemy
 
             var patrolState = new RunBtState<EnemyBTContext>(new RepeatNode(
                 new SequenceNode("PatrolSequence",
-                    new PatrolNode(_btContext, angerDistance, patrolPath),
+                    new PatrolNode(_btContext, angerDistance),
                     new PropagateDetectedPlayerToHive(_btContext)
                 )
             ), _btContext);
@@ -64,6 +64,11 @@ namespace Code.Scripts.Enemy
                 ctx => !IsPlayerOnAttackDistance(ctx));
 
             _stateMachineRunner.StateMachine = stateMachine;
+        }
+
+        private void OnDestroy()
+        {
+            OnDestroyed?.Invoke(this);
         }
 
         private bool IsPlayerOnAttackDistance(EnemyBTContext context)

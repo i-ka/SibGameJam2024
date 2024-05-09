@@ -11,6 +11,7 @@ public class LavaMultipedHive : MonoBehaviour
     [SerializeField] private LavaMultiped multipedPrefab;
     [SerializeField] private float spawnRadius;
     [SerializeField] private float spawnPeriod;
+    [SerializeField] private Transform[] _patrolNodes;
 
     private float _spawnTimer = 0;
     private HashSet<LavaMultiped> _spawnedMultipeds = new ();
@@ -21,7 +22,10 @@ public class LavaMultipedHive : MonoBehaviour
     public void Construct(TestPlayer testPlayer)
     {
         _player = testPlayer;
-        _hiveContext = new HiveContext();
+        _hiveContext = new HiveContext
+        {
+            PatrolPath = _patrolNodes
+        };
     }
 
     private void Update()
@@ -43,5 +47,6 @@ public class LavaMultipedHive : MonoBehaviour
         _spawnedMultipeds.Add(multiped);
         multiped.SetPLayer(_player);
         multiped.SetHive(_hiveContext);
+        multiped.OnDestroyed += m => _spawnedMultipeds.Remove(m);
     }
 }
