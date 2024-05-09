@@ -34,7 +34,7 @@ namespace Code.Scripts.StateMachine.BtNodes
                     if (_currentNodeIndex == _nodes.Length)
                         return BtNodeResult.Success();
                     CurrentNode.OnEnter();
-                    break;
+                    return BtNodeResult.Running();
                 }
                 case BtResultType.Failure:
                 {

@@ -24,7 +24,7 @@ namespace Code.Scripts.Enemy
 
         private void Update()
         {
-            Debug.Log($"Distance to player is {(playerTransform.position - transform.position).magnitude}");
+            //Debug.Log($"Distance to player is {(playerTransform.position - transform.position).magnitude}");
         }
 
 
@@ -35,12 +35,15 @@ namespace Code.Scripts.Enemy
                 Player = playerTransform,
                 Self = this
             };
-            return new RepeatNode(new SequenceNode(
+            return new RepeatNode(
+                new SequenceNode(
                     new PatrolNode(context, Array.Empty<Transform>()),
                     new ChaseNode(context),
-                    new RepeatNode(new SequenceNode(
-                            new AttackNode(context),
-                            new WaitNode(1)
+                    new AlwaysSuccessNode(new RepeatNode(
+                            new SequenceNode(
+                                new AttackNode(context),
+                                new WaitNode(1)
+                            )
                         )
                     )
                 )

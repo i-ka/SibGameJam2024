@@ -27,6 +27,8 @@ namespace Code.Scripts.StateMachine.BtNodes
             switch (result.Type)
             {
                 case BtResultType.Failure:
+                    _node.OnExit();
+                    return BtNodeResult.Failure();
                 case BtResultType.Success:
                 {
                     if (_count > 0)
@@ -42,6 +44,7 @@ namespace Code.Scripts.StateMachine.BtNodes
                     return BtNodeResult.Running();
                 }
                 case BtResultType.StateTransition:
+                    _node.OnExit();
                     return BtNodeResult.ChangeState(result.TargetState);
                 case BtResultType.Running:
                 case BtResultType.NotRun:
