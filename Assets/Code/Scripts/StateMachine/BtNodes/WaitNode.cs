@@ -6,12 +6,14 @@ namespace Code.Scripts.Enemy
     public class WaitNode: IBtNode
     {
         private readonly float _timeSeconds;
+        private readonly string _tag;
 
         private float _currentTime;
 
-        public WaitNode(float timeSeconds)
+        public WaitNode(float timeSeconds, string tag = null)
         {
             _timeSeconds = timeSeconds;
+            _tag = tag;
         }
 
         public void OnEnter()

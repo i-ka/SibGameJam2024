@@ -6,12 +6,15 @@ using UnityEngine;
 namespace Code.Scripts.Enemy
 {
     [RequireComponent(typeof(StateMachineRunner))]
-    public class SimpleEnemy: MonoBehaviour
+    public class SimpleEnemy : MonoBehaviour
     {
         private StateMachineRunner _stateMachineRunner;
-        [SerializeField]
-        private Transform playerTransform;
-        
+        [SerializeField] private Transform playerTransform;
+        [SerializeField] private Transform[] patrolPath;
+
+        public float angerDistance = 10;
+        public float attackDistance = 2;
+
         private void Awake()
         {
             _stateMachineRunner = GetComponent<StateMachineRunner>();
@@ -20,7 +23,6 @@ namespace Code.Scripts.Enemy
             _stateMachineRunner.StateMachine = new StateMachine.StateMachine(state);
         }
 
-
         private IBtNode BuildBehaviourTree()
         {
             var context = new EnemyBTContext()
@@ -28,14 +30,20 @@ namespace Code.Scripts.Enemy
                 Player = playerTransform,
                 Self = this
             };
-            return new RepeatNode(new SequenceNode(
-                new PatrolNode(context, Array.Empty<Transform>()),
-                new ChaseNode(context),
-                new SequenceNode(
-                        new AttackNode(context),
-                        new WaitNode(1)
-                    )
-                ));
+            return new RepeatNode(new AlwaysSuccessNode(
+                new SequenceNode("MainSequence",
+                    new PatrolNode(context, patrolPath),
+                    new SequenceNode("ChaseSequence",
+                        new WaitNode(1, "WaitBeforeChase"),
+                        new ChaseNode(context)
+                    ),
+                    new AlwaysSuccessNode(new RepeatNode(
+                        new SequenceNode("AttackSequence",
+                            new AttackNode(context),
+                            new WaitNode(1)
+                        )))
+                )
+            ), tag: "MainLoop");
         }
     }
 }
