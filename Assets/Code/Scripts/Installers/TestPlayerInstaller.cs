@@ -9,7 +9,7 @@ public class TestPlayerInstaller : MonoInstaller
     private TestPlayer playerPrefab;
     public override void InstallBindings()
     {
-        var player = Container.InstantiatePrefabForComponent<TestPlayer>(playerPrefab);
+        var player = Container.InstantiatePrefabForComponent<TestPlayer>(playerPrefab, playerSpawnPosition.position, Quaternion.identity, null);
         Container.BindInstance(player);
     }
 }

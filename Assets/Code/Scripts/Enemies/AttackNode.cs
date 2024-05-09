@@ -16,7 +16,6 @@ namespace Code.Scripts.Enemy
         
         public void OnEnter()
         {
-            Debug.Log("Perform attack");
         }
 
         public BtNodeResult Tick()
@@ -30,13 +29,11 @@ namespace Code.Scripts.Enemy
             {
                 return BtNodeResult.Failure();
             }
-            Debug.Log("Attack player");
             return BtNodeResult.Success();
         }
 
         public void OnExit()
         {
-            Debug.Log("Stop attack");
         }
     }
 }

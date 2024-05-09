@@ -18,7 +18,6 @@ namespace Code.Scripts.Enemy
         
         public void OnEnter()
         {
-            Debug.Log("Start chase");
         }
 
         public BtNodeResult Tick()
@@ -47,7 +46,6 @@ namespace Code.Scripts.Enemy
 
         public void OnExit()
         {
-            Debug.Log("Stop chase");
         }
     }
 }

@@ -9,8 +9,6 @@ namespace Code.Scripts.Enemy
     {
         private readonly EnemyBTContext _context;
         private readonly float _angerDistance;
-        private int _currentPathIndex;
-        private bool _isStarted;
         private Vector3? _targetPosition = null;
 
         public PatrolNode(EnemyBTContext context, float angerDistance)
@@ -21,10 +19,7 @@ namespace Code.Scripts.Enemy
         
         public void OnEnter()
         {
-            _currentPathIndex = 0;
-            _isStarted = false;
             _targetPosition = null;
-            Debug.Log("Start patrol");
         }
 
         public BtNodeResult Tick()
@@ -46,7 +41,7 @@ namespace Code.Scripts.Enemy
             var hivePosition = _context.Hive.HivePosition.position;
             if (_targetPosition == null)
             {
-                _targetPosition = hivePosition + Random.insideUnitSphere * 10;
+                _targetPosition = hivePosition + Random.insideUnitSphere * _context.Hive.PatrolRadius;
                 _context.NavMeshAgent.SetDestination(_targetPosition.Value);
             }
             else if (_context.NavMeshAgent.remainingDistance <= 0.2f)
@@ -60,7 +55,6 @@ namespace Code.Scripts.Enemy
 
         public void OnExit()
         {
-            Debug.Log("Stop patrol");
         }
     }
 }
