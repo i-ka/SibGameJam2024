@@ -6,11 +6,13 @@ using UnityEngine;
 namespace Code.Scripts.Enemy
 {
     [RequireComponent(typeof(StateMachineRunner))]
-    public class SimpleEnemy: MonoBehaviour
+    public class SimpleEnemy : MonoBehaviour
     {
         private StateMachineRunner _stateMachineRunner;
-        [SerializeField]
-        private Transform playerTransform;
+        [SerializeField] private Transform playerTransform;
+
+        public float angerDistance = 10;
+        public float attackDistance = 2;
 
         private void Awake()
         {
@@ -34,13 +36,15 @@ namespace Code.Scripts.Enemy
                 Self = this
             };
             return new RepeatNode(new SequenceNode(
-                new PatrolNode(context, Array.Empty<Transform>()),
-                new ChaseNode(context),
-                new SequenceNode(
-                        new AttackNode(context),
-                        new WaitNode(1)
+                    new PatrolNode(context, Array.Empty<Transform>()),
+                    new ChaseNode(context),
+                    new RepeatNode(new SequenceNode(
+                            new AttackNode(context),
+                            new WaitNode(1)
+                        )
                     )
-                ));
+                )
+            );
         }
     }
 }

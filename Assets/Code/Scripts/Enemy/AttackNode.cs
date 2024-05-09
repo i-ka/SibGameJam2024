@@ -21,8 +21,7 @@ namespace Code.Scripts.Enemy
         {
             var vectorToPlayer = _context.Player.position - _context.Self.transform.position;
             var sqrPlayerDistance = vectorToPlayer.sqrMagnitude;
-            var directionToPlayer = vectorToPlayer.normalized;
-            if (sqrPlayerDistance > 4)
+            if (sqrPlayerDistance > Mathf.Pow(_context.Self.attackDistance, 2))
             {
                 return BtNodeResult.Failure();
             }

@@ -1,3 +1,4 @@
+using System;
 using Code.Scripts.StateMachine;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ namespace Code.Scripts.Enemy
         {
             var sqrPlayerDistance = (_context.Player.position - _context.Self.transform.position).sqrMagnitude;
             //Debug.Log($"Distance to player is {sqrPlayerDistance}");
-            if (sqrPlayerDistance <= 9)
+            if (sqrPlayerDistance <= Mathf.Pow(_context.Self.angerDistance, 2))
             {
                 return BtNodeResult.Success();
             }

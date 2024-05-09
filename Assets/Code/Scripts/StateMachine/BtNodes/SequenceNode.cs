@@ -18,6 +18,7 @@ namespace Code.Scripts.StateMachine.BtNodes
 
         public void OnEnter()
         {
+            _currentNodeIndex = 0;
             CurrentNode.OnEnter();
         }
 
@@ -36,11 +37,17 @@ namespace Code.Scripts.StateMachine.BtNodes
                     break;
                 }
                 case BtResultType.Failure:
+                {
+                    CurrentNode.OnExit();
                     return BtNodeResult.Failure();
+                }
                 case BtResultType.Running:
                     return BtNodeResult.Running();
                 case BtResultType.StateTransition:
+                {
+                    CurrentNode.OnExit();
                     return BtNodeResult.ChangeState(currentNodeResult.TargetState);
+                }
                 case BtResultType.NotRun:
                     break;
                 default:
@@ -50,6 +57,8 @@ namespace Code.Scripts.StateMachine.BtNodes
             return BtNodeResult.Success();
         }
 
-        public void OnExit() { }
+        public void OnExit()
+        {
+        }
     }
 }
