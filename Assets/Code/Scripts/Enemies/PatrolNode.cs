@@ -1,6 +1,7 @@
 using System;
 using Code.Scripts.StateMachine;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Code.Scripts.Enemy
 {
@@ -10,6 +11,7 @@ namespace Code.Scripts.Enemy
         private readonly float _angerDistance;
         private int _currentPathIndex;
         private bool _isStarted;
+        private Vector3? _targetPosition = null;
 
         public PatrolNode(EnemyBTContext context, float angerDistance)
         {
@@ -21,6 +23,7 @@ namespace Code.Scripts.Enemy
         {
             _currentPathIndex = 0;
             _isStarted = false;
+            _targetPosition = null;
             Debug.Log("Start patrol");
         }
 
@@ -40,21 +43,15 @@ namespace Code.Scripts.Enemy
                 }
             }
 
-            var path = _context.Hive.PatrolPath;
-            if (path?.Length > 0)
+            var hivePosition = _context.Hive.HivePosition.position;
+            if (_targetPosition == null)
             {
-                if (!_isStarted)
-                {
-                    _context.NavMeshAgent.SetDestination(path[_currentPathIndex].position);
-                    _isStarted = true;
-                }
-                if (_context.NavMeshAgent.remainingDistance <= 0.2f)
-                {
-                    _currentPathIndex++;
-                    if (_currentPathIndex >= path.Length)
-                        _currentPathIndex = 0;
-                    _context.NavMeshAgent.SetDestination(path[_currentPathIndex].position);
-                }
+                _targetPosition = hivePosition + Random.insideUnitSphere * 10;
+                _context.NavMeshAgent.SetDestination(_targetPosition.Value);
+            }
+            else if (_context.NavMeshAgent.remainingDistance <= 0.2f)
+            {
+                _targetPosition = null;
             }
 
             return BtNodeResult.Running();

@@ -17,6 +17,7 @@ namespace Code.Scripts.Enemy
     public class HiveContext
     {
         public Transform DetectedPlayer { get; set; }
-        public Transform[] PatrolPath { get; set; }
+        public Transform HivePosition { get; set; }
+        public float PatrolRadius { get; set; }
     }
 }
