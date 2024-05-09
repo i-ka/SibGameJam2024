@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 
-namespace StateMachine.BtNodes
+namespace Code.Scripts.StateMachine.BtNodes
 {
     public class SequenceNode: IBtNode
     {
@@ -9,7 +8,7 @@ namespace StateMachine.BtNodes
         private IBtNode CurrentNode => _nodes[_currentNodeIndex];
         private int _currentNodeIndex = 0;
 
-        public SequenceNode(IBtNode[] nodes)
+        public SequenceNode(params IBtNode[] nodes)
         {
             if (nodes is null || nodes.Length == 0)
                 throw new Exception("Child nodes have no items");

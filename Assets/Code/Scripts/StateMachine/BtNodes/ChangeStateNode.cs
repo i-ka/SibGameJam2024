@@ -1,4 +1,4 @@
-namespace StateMachine.BtNodes
+namespace Code.Scripts.StateMachine.BtNodes
 {
     public class ChangeStateNode: IBtNode
     {

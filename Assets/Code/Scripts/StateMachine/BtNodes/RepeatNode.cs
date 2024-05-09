@@ -1,6 +1,6 @@
 using System;
 
-namespace StateMachine.BtNodes
+namespace Code.Scripts.StateMachine.BtNodes
 {
     public class RepeatNode: IBtNode
     {
@@ -38,6 +38,7 @@ namespace StateMachine.BtNodes
                     }
                     _node.OnExit();
                     _node.OnEnter();
+                    _currentCount++;
                     return BtNodeResult.Running();
                 }
                 case BtResultType.NotRun:

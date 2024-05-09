@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace StateMachine
+namespace Code.Scripts.StateMachine
 {
     public class StateMachineRunner : MonoBehaviour
     {

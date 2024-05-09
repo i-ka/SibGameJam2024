@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace StateMachine
+namespace Code.Scripts.StateMachine
 {
     public struct StateResult
     {

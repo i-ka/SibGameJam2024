@@ -1,4 +1,4 @@
-namespace StateMachine
+namespace Code.Scripts.StateMachine
 {
     public interface IBtNode
     {
