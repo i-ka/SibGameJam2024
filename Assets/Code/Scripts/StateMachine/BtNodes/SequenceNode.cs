@@ -4,15 +4,17 @@ namespace Code.Scripts.StateMachine.BtNodes
 {
     public class SequenceNode: IBtNode
     {
+        private readonly string _tag;
         private readonly IBtNode[] _nodes;
         private IBtNode CurrentNode => _nodes[_currentNodeIndex];
         private int _currentNodeIndex = 0;
 
-        public SequenceNode(params IBtNode[] nodes)
+        public SequenceNode(string tag, params IBtNode[] nodes)
         {
             if (nodes is null || nodes.Length == 0)
                 throw new Exception("Child nodes have no items");
-            
+
+            _tag = tag;
             _nodes = nodes;
         }
 

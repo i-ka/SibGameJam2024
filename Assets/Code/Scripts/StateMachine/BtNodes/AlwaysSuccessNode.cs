@@ -13,6 +13,7 @@ namespace Code.Scripts.StateMachine.BtNodes
 
         public void OnEnter()
         {
+            _inner.OnEnter();
         }
 
         public BtNodeResult Tick()

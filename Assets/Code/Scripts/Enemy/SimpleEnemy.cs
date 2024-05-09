@@ -22,12 +22,6 @@ namespace Code.Scripts.Enemy
             _stateMachineRunner.StateMachine = new StateMachine.StateMachine(state);
         }
 
-        private void Update()
-        {
-            //Debug.Log($"Distance to player is {(playerTransform.position - transform.position).magnitude}");
-        }
-
-
         private IBtNode BuildBehaviourTree()
         {
             var context = new EnemyBTContext()
@@ -35,16 +29,20 @@ namespace Code.Scripts.Enemy
                 Player = playerTransform,
                 Self = this
             };
-            return new RepeatNode(
-                new SequenceNode(
+            return new RepeatNode(new AlwaysSuccessNode(
+                new SequenceNode("MainSequence",
                     new PatrolNode(context, Array.Empty<Transform>()),
-                    new ChaseNode(context),
-                    new SequenceNode(
-                        new AttackNode(context),
-                        new WaitNode(1)
-                    )
+                    new SequenceNode("ChaseSequence",
+                        new WaitNode(1, "WaitBeforeChase"),
+                        new ChaseNode(context)
+                    ),
+                    new AlwaysSuccessNode(new RepeatNode(
+                        new SequenceNode("AttackSequence",
+                            new AttackNode(context),
+                            new WaitNode(1)
+                        )))
                 )
-            );
+            ), tag: "MainLoop");
         }
     }
 }

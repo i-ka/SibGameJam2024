@@ -6,14 +6,16 @@ namespace Code.Scripts.StateMachine.BtNodes
     {
         private readonly IBtNode _node;
         private readonly int _count;
+        private readonly string _tag;
         private int _currentCount = 0;
 
-        public RepeatNode(IBtNode node, int count = -1)
+        public RepeatNode(IBtNode node, int count = -1, string tag = null)
         {
             if (count == 0)
                 throw new ArgumentException("Repeat count cannot be null", nameof(count));
             _node = node;
             _count = count;
+            _tag = tag;
         }
         
         public void OnEnter()
@@ -27,7 +29,6 @@ namespace Code.Scripts.StateMachine.BtNodes
             switch (result.Type)
             {
                 case BtResultType.Failure:
-                    _node.OnExit();
                     return BtNodeResult.Failure();
                 case BtResultType.Success:
                 {
@@ -37,14 +38,13 @@ namespace Code.Scripts.StateMachine.BtNodes
                         {
                             return BtNodeResult.Success();
                         }
+                        _currentCount++;
                     }
                     _node.OnExit();
                     _node.OnEnter();
-                    _currentCount++;
                     return BtNodeResult.Running();
                 }
                 case BtResultType.StateTransition:
-                    _node.OnExit();
                     return BtNodeResult.ChangeState(result.TargetState);
                 case BtResultType.Running:
                 case BtResultType.NotRun:
