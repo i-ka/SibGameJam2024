@@ -6,10 +6,12 @@ namespace Code.Scripts.Enemy
     public class AttackNode: IBtNode
     {
         private readonly EnemyBTContext _context;
+        private readonly float _attackDistance;
 
-        public AttackNode(EnemyBTContext context)
+        public AttackNode(EnemyBTContext context, float attackDistance)
         {
             _context = context;
+            _attackDistance = attackDistance;
         }
         
         public void OnEnter()
@@ -19,9 +21,12 @@ namespace Code.Scripts.Enemy
 
         public BtNodeResult Tick()
         {
-            var vectorToPlayer = _context.Player.position - _context.Self.transform.position;
+            if (!_context.DetectedPlayer)
+                return BtNodeResult.Failure();
+            
+            var vectorToPlayer = _context.DetectedPlayer.position - _context.Self.transform.position;
             var sqrPlayerDistance = vectorToPlayer.sqrMagnitude;
-            if (sqrPlayerDistance > Mathf.Pow(_context.Self.attackDistance, 2))
+            if (sqrPlayerDistance > Mathf.Pow(_attackDistance, 2))
             {
                 return BtNodeResult.Failure();
             }
@@ -31,6 +36,7 @@ namespace Code.Scripts.Enemy
 
         public void OnExit()
         {
+            Debug.Log("Stop attack");
         }
     }
 }

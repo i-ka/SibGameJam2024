@@ -26,23 +26,22 @@ namespace Code.Scripts.Enemy
             var context = new EnemyBTContext()
             {
                 DetectedPlayer = null,
-                Player = playerTransform,
-                Self = this,
+                Self = transform,
                 NavMeshAgent = _navMeshAgent
             };
 
             var chaseState = new RunBtState<EnemyBTContext>(
                 new SequenceNode("ChaseSequence",
                     new WaitNode(1, "WaitBeforeChase"),
-                    new ChaseNode(context)
+                    new ChaseNode(context, angerDistance, attackDistance)
                 ), context);
 
             var patrolState = new RunBtState<EnemyBTContext>(new RepeatNode(
-                new PatrolNode(context, patrolPath)
+                new PatrolNode(context, playerTransform, angerDistance, patrolPath)
             ), context);
 
             var fightState = new RunBtState<EnemyBTContext>(new RepeatNode(new SequenceNode("AttackSequence",
-                new AttackNode(context),
+                new AttackNode(context, attackDistance),
                 new WaitNode(1)
             )), context);
 
@@ -58,7 +57,7 @@ namespace Code.Scripts.Enemy
                 _ => (playerTransform.position - transform.position).sqrMagnitude <= Mathf.Pow(attackDistance, 2));
             
             stateMachine.AddTransition(fightState, chaseState,
-                _ => (playerTransform.position - transform.position).sqrMagnitude < Mathf.Pow(attackDistance, 2));
+                _ => (playerTransform.position - transform.position).sqrMagnitude > Mathf.Pow(attackDistance, 2));
 
             _stateMachineRunner.StateMachine = stateMachine;
         }

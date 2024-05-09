@@ -7,13 +7,17 @@ namespace Code.Scripts.Enemy
     public class PatrolNode: IBtNode
     {
         private readonly EnemyBTContext _context;
+        private readonly Transform _target;
+        private readonly float _angerDistance;
         private readonly Transform[] _path;
         private int _currentPathIndex;
         private bool _isStarted;
 
-        public PatrolNode(EnemyBTContext context, Transform[] path)
+        public PatrolNode(EnemyBTContext context, Transform target, float angerDistance, Transform[] path)
         {
             _context = context;
+            _target = target;
+            _angerDistance = angerDistance;
             _path = path;
         }
         
@@ -27,14 +31,14 @@ namespace Code.Scripts.Enemy
 
         public BtNodeResult Tick()
         {
-            var vectorToPlayer = _context.Player.position - _context.Self.transform.position;
+            var vectorToPlayer = _target.position - _context.Self.transform.position;
             var sqrPlayerDistance = vectorToPlayer.sqrMagnitude;
             var directionToPlayer = vectorToPlayer.normalized;
-            if (sqrPlayerDistance <= Mathf.Pow(_context.Self.angerDistance, 2))
+            if (sqrPlayerDistance <= Mathf.Pow(_angerDistance, 2))
             {
                 Debug.DrawRay(_context.Self.transform.position, directionToPlayer, Color.green);
                 var hit = Physics.Raycast(_context.Self.transform.position, directionToPlayer, out var hitInfo);
-                if (hit && hitInfo.transform == _context.Player)
+                if (hit && hitInfo.transform == _target)
                 {
                     _context.DetectedPlayer = hitInfo.transform;
                     _context.NavMeshAgent.isStopped = true;
