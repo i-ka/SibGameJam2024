@@ -17,18 +17,23 @@ namespace Code.Scripts.Enemy
         
         public void OnEnter()
         {
-            Debug.Log("Patroling");
         }
 
         public BtNodeResult Tick()
         {
-            var sqrPlayerDistance = (_context.Player.position - _context.Self.transform.position).sqrMagnitude;
-            //Debug.Log($"Distance to player is {sqrPlayerDistance}");
+            var vectorToPlayer = _context.Player.position - _context.Self.transform.position;
+            var sqrPlayerDistance = vectorToPlayer.sqrMagnitude;
+            var directionToPlayer = vectorToPlayer.normalized;
             if (sqrPlayerDistance <= Mathf.Pow(_context.Self.angerDistance, 2))
             {
-                return BtNodeResult.Success();
+                Debug.DrawRay(_context.Self.transform.position, directionToPlayer, Color.green);
+                var hit = Physics.Raycast(_context.Self.transform.position, directionToPlayer, out var hitInfo);
+                if (hit && hitInfo.transform == _context.Player)
+                    return BtNodeResult.Success();
             }
+            
             //todo: go through checkpoints
+            
             return BtNodeResult.Running();
         }
 
