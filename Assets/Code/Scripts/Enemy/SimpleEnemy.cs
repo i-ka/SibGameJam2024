@@ -10,6 +10,7 @@ namespace Code.Scripts.Enemy
     {
         private StateMachineRunner _stateMachineRunner;
         [SerializeField] private Transform playerTransform;
+        [SerializeField] private Transform[] patrolPath;
 
         public float angerDistance = 10;
         public float attackDistance = 2;
@@ -31,7 +32,7 @@ namespace Code.Scripts.Enemy
             };
             return new RepeatNode(new AlwaysSuccessNode(
                 new SequenceNode("MainSequence",
-                    new PatrolNode(context, Array.Empty<Transform>()),
+                    new PatrolNode(context, patrolPath),
                     new SequenceNode("ChaseSequence",
                         new WaitNode(1, "WaitBeforeChase"),
                         new ChaseNode(context)
