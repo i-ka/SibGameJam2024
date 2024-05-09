@@ -16,12 +16,13 @@ namespace Code.Scripts.Enemy
         
         public void OnEnter()
         {
-            
+            Debug.Log("Patroling");
         }
 
         public BtNodeResult Tick()
         {
             var sqrPlayerDistance = (_context.Player.position - _context.Self.transform.position).sqrMagnitude;
+            //Debug.Log($"Distance to player is {sqrPlayerDistance}");
             if (sqrPlayerDistance <= 9)
             {
                 return BtNodeResult.Success();

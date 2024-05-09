@@ -41,10 +41,11 @@ namespace Code.Scripts.StateMachine.BtNodes
                     _currentCount++;
                     return BtNodeResult.Running();
                 }
-                case BtResultType.NotRun:
-                case BtResultType.Running:
                 case BtResultType.StateTransition:
                     return BtNodeResult.ChangeState(result.TargetState);
+                case BtResultType.Running:
+                case BtResultType.NotRun:
+                    return BtNodeResult.Running();
                 default:
                     throw new ArgumentOutOfRangeException();
             }

@@ -11,13 +11,18 @@ namespace Code.Scripts.Enemy
         private StateMachineRunner _stateMachineRunner;
         [SerializeField]
         private Transform playerTransform;
-        
+
         private void Awake()
         {
             _stateMachineRunner = GetComponent<StateMachineRunner>();
 
             var state = new RunBtState(BuildBehaviourTree());
             _stateMachineRunner.StateMachine = new StateMachine.StateMachine(state);
+        }
+
+        private void Update()
+        {
+            Debug.Log($"Distance to player is {(playerTransform.position - transform.position).magnitude}");
         }
 
 

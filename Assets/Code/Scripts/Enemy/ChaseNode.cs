@@ -14,6 +14,7 @@ namespace Code.Scripts.Enemy
         
         public void OnEnter()
         {
+            Debug.Log("Start chase");
         }
 
         public BtNodeResult Tick()

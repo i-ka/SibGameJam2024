@@ -14,6 +14,7 @@ namespace Code.Scripts.Enemy
         
         public void OnEnter()
         {
+            Debug.Log("Perform attack");
         }
 
         public BtNodeResult Tick()
