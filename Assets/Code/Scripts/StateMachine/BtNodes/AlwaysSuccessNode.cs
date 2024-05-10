@@ -26,8 +26,6 @@ namespace Code.Scripts.StateMachine.BtNodes
                     return BtNodeResult.Success();
                 case BtResultType.Running:
                     return BtNodeResult.Running();
-                case BtResultType.StateTransition:
-                    return BtNodeResult.ChangeState(result.TargetState);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
