@@ -1,18 +1,18 @@
 using Code.Scripts.MainMenu;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class MainMenuView : MonoBehaviour
 {
     private MainMenuController _controller;
-    private SettingsMenuView _settingsMenuView;
-
+    [SerializeField]
+    private GameObject settingsMenu;
 
     [Inject]
-    public void Construct(MainMenuController mainMenuController, SettingsMenuView settingsMenuView)
+    public void Construct(MainMenuController mainMenuController)
     {
         _controller = mainMenuController;
-        _settingsMenuView = settingsMenuView;
     }
 
     public void OnGameStartButton()
@@ -22,7 +22,8 @@ public class MainMenuView : MonoBehaviour
 
     public void OnGameSettings()
     {
-        _settingsMenuView.gameObject.SetActive(true);
+        settingsMenu.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     public void OnExitGame()
