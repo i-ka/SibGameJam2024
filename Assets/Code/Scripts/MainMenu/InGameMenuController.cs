@@ -19,11 +19,13 @@ namespace Code.Scripts.MainMenu
                 if (value)
                 {
                     GameMenuShown?.Invoke();
+                    Cursor.visible = true;
                     _isGameMenuShown = true;
                 }
                 else
                 {
                     GameMenuHidden?.Invoke();
+                    Cursor.visible = false;
                     _isGameMenuShown = false;
                 }
             }
