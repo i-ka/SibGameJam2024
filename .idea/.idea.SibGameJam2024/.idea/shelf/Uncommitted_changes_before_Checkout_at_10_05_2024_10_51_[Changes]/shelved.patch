@@ -1,0 +1,133 @@
+Index: Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta
+===================================================================
+diff --git a/Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta b/Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta
+deleted file mode 100644
+--- a/Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta	(revision cfce206a2d359303294831f940f70918323ccde6)
++++ /dev/null	(revision cfce206a2d359303294831f940f70918323ccde6)
+@@ -1,7 +0,0 @@
+-fileFormatVersion: 2
+-guid: aebd7ef925dd4fe4690c3238e879f914
+-DefaultImporter:
+-  externalObjects: {}
+-  userData: 
+-  assetBundleName: 
+-  assetBundleVariant: 
+Index: Assets/Plugins/Zenject/Source/Zenject.csproj.meta
+===================================================================
+diff --git a/Assets/Plugins/Zenject/Source/Zenject.csproj.meta b/Assets/Plugins/Zenject/Source/Zenject.csproj.meta
+deleted file mode 100644
+--- a/Assets/Plugins/Zenject/Source/Zenject.csproj.meta	(revision cfce206a2d359303294831f940f70918323ccde6)
++++ /dev/null	(revision cfce206a2d359303294831f940f70918323ccde6)
+@@ -1,7 +0,0 @@
+-fileFormatVersion: 2
+-guid: 8645273165cb7f54290d6eaa1e10ab37
+-DefaultImporter:
+-  externalObjects: {}
+-  userData: 
+-  assetBundleName: 
+-  assetBundleVariant: 
+Index: ProjectSettings/Packages/com.unity.probuilder/Settings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"m_Dictionary\": {\r\n        \"m_DictionaryValues\": [\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.SemVer, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"about.identifier\",\r\n                \"value\": \"{\\\"m_Value\\\":{\\\"m_Major\\\":5,\\\"m_Minor\\\":2,\\\"m_Patch\\\":2,\\\"m_Build\\\":-1,\\\"m_Type\\\":\\\"\\\",\\\"m_Metadata\\\":\\\"\\\",\\\"m_Date\\\":\\\"\\\"}}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.SemVer, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"preferences.version\",\r\n                \"value\": \"{\\\"m_Value\\\":{\\\"m_Major\\\":5,\\\"m_Minor\\\":2,\\\"m_Patch\\\":2,\\\"m_Build\\\":-1,\\\"m_Type\\\":\\\"\\\",\\\"m_Metadata\\\":\\\"\\\",\\\"m_Date\\\":\\\"\\\"}}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.LogLevel, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"log.level\",\r\n                \"value\": \"{\\\"m_Value\\\":3}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.LogOutput, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"log.output\",\r\n                \"value\": \"{\\\"m_Value\\\":1}\"\r\n            },\r\n            {\r\n                \"type\": \"System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"log.path\",\r\n                \"value\": \"{\\\"m_Value\\\":\\\"ProBuilderLog.txt\\\"}\"\r\n            },\r\n            {\r\n                \"type\": \"System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"VertexColorPalette.previousColorPalette\",\r\n                \"value\": \"{\\\"m_Value\\\":\\\"Assets/ProBuilder Data/Default Color Palette.asset\\\"}\"\r\n            },\r\n            {\r\n                \"type\": \"System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"editor.materialPalettePath\",\r\n                \"value\": \"{\\\"m_Value\\\":\\\"Assets/ProBuilder Data/Default Material Palette.asset\\\"}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.PivotLocation, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"mesh.newShapePivotLocation\",\r\n                \"value\": \"{\\\"m_Value\\\":1}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"mesh.newShapesSnapToGrid\",\r\n                \"value\": \"{\\\"m_Value\\\":true}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"mesh.meshColliderIsConvex\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"lightmapping.autoUnwrapLightmapUV\",\r\n                \"value\": \"{\\\"m_Value\\\":true}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"editor.autoRecalculateCollisions\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"experimental.enabled\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"UnityEngine.ProBuilder.ProBuilderEditor-isUtilityWindow\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"editor.backFaceSelectEnabled\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"editor.toolbarIconGUI\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"editor.showSceneInfo\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"ShapeComponent.ResetSettings\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"ShapeComponent.SettingsEnabled\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"smoothing.showSettings\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"smoothing.showPreview\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"smoothing.showNormals\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"smoothing.showHelp\",\r\n                \"value\": \"{\\\"m_Value\\\":false}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.Rendering.ShadowCastingMode, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"mesh.shadowCastingMode\",\r\n                \"value\": \"{\\\"m_Value\\\":1}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"mesh.userMaterial\",\r\n                \"value\": \"{\\\"m_Value\\\":{\\\"instanceID\\\":0}}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEditor.StaticEditorFlags, UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"mesh.defaultStaticEditorFlags\",\r\n                \"value\": \"{\\\"m_Value\\\":0}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.ColliderType, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"mesh.newShapeColliderType\",\r\n                \"value\": \"{\\\"m_Value\\\":2}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.UnwrapParameters, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"lightmapping.defaultLightmapUnwrapParameters\",\r\n                \"value\": \"{\\\"m_Value\\\":{\\\"m_HardAngle\\\":88.0,\\\"m_PackMargin\\\":20.0,\\\"m_AngleError\\\":8.0,\\\"m_AreaError\\\":15.0}}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"editor.selectMode\",\r\n                \"value\": \"{\\\"m_Value\\\":1}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"editor.lastMeshSelectMode\",\r\n                \"value\": \"{\\\"m_Value\\\":2}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.SelectionModifierBehavior, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"editor.rectSelectModifier\",\r\n                \"value\": \"{\\\"m_Value\\\":2}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.RectSelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"editor.dragSelectRectMode\",\r\n                \"value\": \"{\\\"m_Value\\\":0}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"ShapeBuilder.ActiveShapeIndex\",\r\n                \"value\": \"{\\\"m_Value\\\":0}\"\r\n            },\r\n            {\r\n                \"type\": \"System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                \"key\": \"ShapeBuilder.LastPivotLocation\",\r\n                \"value\": \"{\\\"m_Value\\\":1}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"ShapeBuilder.LastPivotPosition\",\r\n                \"value\": \"{\\\"m_Value\\\":{\\\"x\\\":0.0,\\\"y\\\":0.0,\\\"z\\\":0.0}}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"ShapeBuilder.LastSize\",\r\n                \"value\": \"{\\\"m_Value\\\":{\\\"x\\\":4.5674519538879398,\\\"y\\\":0.0,\\\"z\\\":-4.184696197509766}}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"ShapeBuilder.LastRotation\",\r\n                \"value\": \"{\\\"m_Value\\\":{\\\"x\\\":0.0,\\\"y\\\":0.0,\\\"z\\\":0.0,\\\"w\\\":1.0}}\"\r\n            },\r\n            {\r\n                \"type\": \"UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\r\n                \"key\": \"ShapeBuilder.Sprite\",\r\n                \"value\": \"{}\"\r\n            }\r\n        ]\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProjectSettings/Packages/com.unity.probuilder/Settings.json b/ProjectSettings/Packages/com.unity.probuilder/Settings.json
+--- a/ProjectSettings/Packages/com.unity.probuilder/Settings.json	(revision cfce206a2d359303294831f940f70918323ccde6)
++++ b/ProjectSettings/Packages/com.unity.probuilder/Settings.json	(date 1715272939497)
+@@ -27,16 +27,6 @@
+                 "value": "{\"m_Value\":\"ProBuilderLog.txt\"}"
+             },
+             {
+-                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+-                "key": "VertexColorPalette.previousColorPalette",
+-                "value": "{\"m_Value\":\"Assets/ProBuilder Data/Default Color Palette.asset\"}"
+-            },
+-            {
+-                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+-                "key": "editor.materialPalettePath",
+-                "value": "{\"m_Value\":\"Assets/ProBuilder Data/Default Material Palette.asset\"}"
+-            },
+-            {
+                 "type": "UnityEngine.ProBuilder.PivotLocation, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                 "key": "mesh.newShapePivotLocation",
+                 "value": "{\"m_Value\":1}"
+@@ -80,11 +70,6 @@
+                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                 "key": "editor.toolbarIconGUI",
+                 "value": "{\"m_Value\":false}"
+-            },
+-            {
+-                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+-                "key": "editor.showSceneInfo",
+-                "value": "{\"m_Value\":false}"
+             },
+             {
+                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+@@ -93,27 +78,7 @@
+             },
+             {
+                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+-                "key": "ShapeComponent.SettingsEnabled",
+-                "value": "{\"m_Value\":false}"
+-            },
+-            {
+-                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+-                "key": "smoothing.showSettings",
+-                "value": "{\"m_Value\":false}"
+-            },
+-            {
+-                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+-                "key": "smoothing.showPreview",
+-                "value": "{\"m_Value\":false}"
+-            },
+-            {
+-                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+-                "key": "smoothing.showNormals",
+-                "value": "{\"m_Value\":false}"
+-            },
+-            {
+-                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+-                "key": "smoothing.showHelp",
++                "key": "editor.showSceneInfo",
+                 "value": "{\"m_Value\":false}"
+             },
+             {
+@@ -160,36 +125,6 @@
+                 "type": "UnityEngine.ProBuilder.RectSelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                 "key": "editor.dragSelectRectMode",
+                 "value": "{\"m_Value\":0}"
+-            },
+-            {
+-                "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+-                "key": "ShapeBuilder.ActiveShapeIndex",
+-                "value": "{\"m_Value\":0}"
+-            },
+-            {
+-                "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+-                "key": "ShapeBuilder.LastPivotLocation",
+-                "value": "{\"m_Value\":1}"
+-            },
+-            {
+-                "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+-                "key": "ShapeBuilder.LastPivotPosition",
+-                "value": "{\"m_Value\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}}"
+-            },
+-            {
+-                "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+-                "key": "ShapeBuilder.LastSize",
+-                "value": "{\"m_Value\":{\"x\":4.5674519538879398,\"y\":0.0,\"z\":-4.184696197509766}}"
+-            },
+-            {
+-                "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+-                "key": "ShapeBuilder.LastRotation",
+-                "value": "{\"m_Value\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0}}"
+-            },
+-            {
+-                "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+-                "key": "ShapeBuilder.Sprite",
+-                "value": "{}"
+             }
+         ]
+     }
