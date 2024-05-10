@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1837,6 +1837,106 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1809541427624012514, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -325
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809541427624012514, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 144
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.ctime1
+      value: 16384
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.ctime2
+      value: 26792
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.ctime3
+      value: 45875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.ctime4
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.ctime5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key0.b
+      value: 0.0039215395
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key0.g
+      value: 0.052095182
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key0.r
+      value: 0.9843137
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key1.b
+      value: 0.0039215684
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key1.g
+      value: 0.003921712
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key2.b
+      value: 0.005468888
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key2.g
+      value: 0.9661842
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key2.r
+      value: 0.99869335
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key3.b
+      value: 0.006448749
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key3.g
+      value: 0.9676655
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key3.r
+      value: 0.9549459
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key4.b
+      value: 0.027837753
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key4.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key4.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key5.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.key5.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668719081408677594, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: healthColorGradient.m_NumColorKeys
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4936240022010161692, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1920,6 +2020,18 @@ PrefabInstance:
     - target: {fileID: 5440250723082311422, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
       propertyPath: m_Name
       value: InGameInterface
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656286231594483814, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656286231594483814, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -170
+      objectReference: {fileID: 0}
+    - target: {fileID: 8656286231594483814, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 171
       objectReference: {fileID: 0}
     - target: {fileID: 8824486633685217297, guid: 1128cdcc7a610fe43b94b6e63bf60468, type: 3}
       propertyPath: m_AnchorMax.y
