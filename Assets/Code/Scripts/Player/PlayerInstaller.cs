@@ -27,6 +27,7 @@ namespace Code.Scripts.PLayer
         {
             _controls = new();
             Container.Bind<Controls>().FromInstance(_controls);
+            Container.Bind<PlayerMovementInfo>().AsSingle();
 
             var playerMovementController = GameObject.FindAnyObjectByType<PlayerMovementController>();
             var cameraController = GameObject.FindAnyObjectByType<CameraController>();
