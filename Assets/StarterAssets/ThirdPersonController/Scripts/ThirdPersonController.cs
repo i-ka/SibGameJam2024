@@ -75,6 +75,8 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        [SerializeField] public float kncockbackForceFade = 2;
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -109,6 +111,8 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
+
+        private Vector3 _additionalMove;
 
         private bool IsCurrentDeviceMouse
         {
@@ -214,7 +218,7 @@ namespace StarterAssets
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float targetSpeed = (_input.sprint ? SprintSpeed : MoveSpeed) ;
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -236,9 +240,6 @@ namespace StarterAssets
                 // note T in Lerp is clamped, so we don't need to clamp our speed
                 _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
                     Time.deltaTime * SpeedChangeRate);
-
-                // round speed to 3 decimal places
-                _speed = Mathf.Round(_speed * 1000f) / 1000f;
             }
             else
             {
@@ -265,11 +266,18 @@ namespace StarterAssets
             }
 
 
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+            var targetDirection = Quaternion.Euler(0.0f, CinemachineCameraTarget.transform.rotation.eulerAngles.y, 0.0f);
+            
+            
 
+            var horizontalAdditionalMove = new Vector3(_additionalMove.x, 0, _additionalMove.z);
+            var horizontalDelta = targetDirection * new Vector3(_input.move.x, 0, _input.move.y) * (targetSpeed * Time.deltaTime); //targetDirection.normalized * (_speed * Time.deltaTime);
+            var verticalDelta = new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime;
+            
             // move the player
-            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            _controller.Move(horizontalDelta + verticalDelta + _additionalMove * Time.deltaTime);
+
+            _additionalMove = Vector3.Lerp(_additionalMove, Vector3.zero, Time.deltaTime * kncockbackForceFade);
 
             // update animator if using character
             if (_hasAnimator)
@@ -342,10 +350,18 @@ namespace StarterAssets
             }
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-            if (_verticalVelocity < _terminalVelocity)
-            {
-                _verticalVelocity += Gravity * Time.deltaTime;
-            }
+            _verticalVelocity += Gravity * Time.deltaTime;
+            _verticalVelocity += _additionalMove.y * Time.deltaTime;
+        }
+
+        public void ApplyForce(Vector3 vector3)
+        {
+            _additionalMove = vector3;
+        }
+
+        private void OnTest()
+        {
+            ApplyForce(new Vector3(10, 20, 10));
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

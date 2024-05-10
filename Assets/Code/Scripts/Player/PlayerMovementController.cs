@@ -71,6 +71,8 @@ namespace Code.Scripts.PLayer
 
             var inputMovementX = _controls.Player.MovementX.ReadValue<float>();
             var inputMovementZ = _controls.Player.MovementY.ReadValue<float>();
+            
+            Debug.Log($"Input movement vector {inputMovementX}, {inputMovementZ}");
 
             var directionX = transform.right * inputMovementX;
             var directionZ = transform.forward * inputMovementZ;
