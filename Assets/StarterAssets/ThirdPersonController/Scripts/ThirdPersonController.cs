@@ -112,7 +112,7 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
-        private Vector3 _horizontalAdditionalMove;
+        private Vector3 _additionalMove;
 
         private bool IsCurrentDeviceMouse
         {
@@ -266,15 +266,18 @@ namespace StarterAssets
             }
 
 
-            var targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f);
+            var targetDirection = Quaternion.Euler(0.0f, CinemachineCameraTarget.transform.rotation.eulerAngles.y, 0.0f);
+            
+            
 
-            var horizontalDelta = (CinemachineCameraTarget.transform.rotation * (targetSpeed * new Vector3(_input.move.x, 0, _input.move.y)) + _horizontalAdditionalMove) * Time.deltaTime; //targetDirection.normalized * (_speed * Time.deltaTime);
+            var horizontalAdditionalMove = new Vector3(_additionalMove.x, 0, _additionalMove.z);
+            var horizontalDelta = targetDirection * new Vector3(_input.move.x, 0, _input.move.y) * (targetSpeed * Time.deltaTime); //targetDirection.normalized * (_speed * Time.deltaTime);
             var verticalDelta = new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime;
             
             // move the player
-            _controller.Move(horizontalDelta + verticalDelta + _horizontalAdditionalMove * Time.deltaTime);
+            _controller.Move(horizontalDelta + verticalDelta + _additionalMove * Time.deltaTime);
 
-            _horizontalAdditionalMove = Vector3.Lerp(_horizontalAdditionalMove, Vector3.zero, Time.deltaTime * kncockbackForceFade);
+            _additionalMove = Vector3.Lerp(_additionalMove, Vector3.zero, Time.deltaTime * kncockbackForceFade);
 
             // update animator if using character
             if (_hasAnimator)
@@ -347,16 +350,13 @@ namespace StarterAssets
             }
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-            if (_verticalVelocity < _terminalVelocity)
-            {
-                _verticalVelocity += Gravity * Time.deltaTime;
-            }
+            _verticalVelocity += Gravity * Time.deltaTime;
+            _verticalVelocity += _additionalMove.y * Time.deltaTime;
         }
 
         public void ApplyForce(Vector3 vector3)
         {
-            _verticalVelocity += vector3.y;
-            _horizontalAdditionalMove = new Vector3(vector3.x, 0, vector3.z);
+            _additionalMove = vector3;
         }
 
         private void OnTest()
