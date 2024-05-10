@@ -8,6 +8,7 @@ public class Blast : MonoBehaviour
 {
     [SerializeField] private float _radius;
     [SerializeField] private float _force;
+    [SerializeField] private float _playerKnockbackReductionRatio = 15;
     private float _maxDamage;
 
     public void Explode()
@@ -49,7 +50,7 @@ public class Blast : MonoBehaviour
             }
             else if (controller)
             {
-                float force = _force / 20;
+                float force = _force / _playerKnockbackReductionRatio;
                 var directionToPlayer = (controller.transform.position - transform.position).normalized;
                 controller.ApplyForce(directionToPlayer * force);
             }
