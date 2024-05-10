@@ -28,7 +28,8 @@ namespace Code.Scripts.PLayer
         private Vector3 _localDirection = Vector3.zero;
         private Quaternion _targetRotation = Quaternion.identity;
 
-        private bool _isOnTheGround = false;
+        private bool _isOnTheGround = true;
+        private bool _previousIsOnTheGround = true;
         private PlayerMovementInfo _playerMovementInfo;
 
         public float MovementSpeed => _movementSpeed;
@@ -77,7 +78,15 @@ namespace Code.Scripts.PLayer
             _direction = directionX + directionZ;
             _targetVelocity = _direction * _movementSpeed;
 
-            _localDirection = new(inputMovementX, 0, inputMovementZ);
+            switch (_previousIsOnTheGround) 
+            {
+                case true:
+                    _localDirection = new(inputMovementX, 0, inputMovementZ);
+                    break;
+                case false:
+                    _localDirection = Vector3.forward;
+                    break;
+            }
         }
 
         private void SetTransformForwardVector() 
@@ -100,6 +109,7 @@ namespace Code.Scripts.PLayer
 
         private void CalculateJumpVelocity()
         {
+            _previousIsOnTheGround = _isOnTheGround;
             _isOnTheGround = Physics.Raycast(_raycastTransform.position, Vector3.down, _jumpRaycstDistance, _groundLayer);
 
             if (_isOnTheGround) 

@@ -272,6 +272,7 @@ MonoBehaviour:
   _movementSpeed: 5
   _velocitySpeed: 100
   _ratationSpeed: 250
+  _ratationForwardVectorSpeed: 7
   _rotationTransform: {fileID: 3926082389882139466}
   _groundLayer:
     serializedVersion: 2

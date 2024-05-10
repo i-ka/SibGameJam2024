@@ -8,9 +8,15 @@ namespace Code.Scripts.Camera
     {
         [SerializeField] private UnityEngine.Camera _camera;
         [SerializeField] private Transform _transformForForwardDirection;
-        [SerializeField] private float _maxAngleChangePerFrame;
+        [SerializeField] private float _rotationSpeed;
+        [Header("Rotation around Y axis")]
+        [SerializeField] private float _maxAngleChangePerFrameY;
+        [Header("Rotation around Z axis")]
+        [SerializeField] private float _maxAngleChangePerFrameZ;
+        [SerializeField] private int _minRotationAngleAxisZ;
+        [SerializeField] private int _maxRotationAngleAxisZ;
+        [Header("Values: X - Y axis, Y - Z axis")]
         [SerializeField] private Vector2 _minMousePositionChange;
-        [SerializeField] private int _maxRotationAxisY;
 
         private PlayerMovementController _playerMovementController;
         private Controls _controls;
@@ -46,8 +52,8 @@ namespace Code.Scripts.Camera
 
         private void FixedUpdate()
         {
-            var abgleAxisY = GetAngle(ref _directionX, _minMousePositionChange.x, transform.rotation.eulerAngles.y);
-            var angleAxisX = (int)GetAngle(ref _directionY, _minMousePositionChange.y, 0);
+            var abgleAxisY = GetAngle(ref _directionX, _minMousePositionChange.x, transform.rotation.eulerAngles.y, _maxAngleChangePerFrameY);
+            var angleAxisX = GetAngle(ref _directionY, _minMousePositionChange.y, 0, _maxAngleChangePerFrameZ);
        
             var targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, abgleAxisY, 0);
 
@@ -62,7 +68,7 @@ namespace Code.Scripts.Camera
                 targetRotation *= Quaternion.Euler(angleAxisX, 0, 0);
             }
 
-            transform.rotation = targetRotation;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation ,targetRotation, Time.fixedDeltaTime * _rotationSpeed);
         }
 
         private bool DegreesCondition() 
@@ -72,17 +78,17 @@ namespace Code.Scripts.Camera
 
         private bool RotationCondition(int actualAngle) 
         {
-            return (_directionY < 0 && actualAngle >= -_maxRotationAxisY) || 
-                (_directionY > 0 && actualAngle <= _maxRotationAxisY);
+            return (_directionY < 0 && actualAngle >= _minRotationAngleAxisZ) || 
+                (_directionY > 0 && actualAngle <= _maxRotationAngleAxisZ);
         }
 
-        private float GetAngle(ref float direction, float minChange, float eulerAngle) 
+        private float GetAngle(ref float direction, float minChange, float eulerAngle, float maxAngleChangePerFrame) 
         {
             if (Mathf.Abs(direction) < minChange || direction == 0) return eulerAngle;
 
             direction = direction / Mathf.Abs(direction);
 
-            return eulerAngle + (_maxAngleChangePerFrame * direction);
+            return eulerAngle + (maxAngleChangePerFrame * direction);
         }
     }
 }
