@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 2522505888678128508}
   - component: {fileID: 2084125656959387657}
   - component: {fileID: 8306313373020185929}
+  - component: {fileID: 8072729322340251909}
   m_Layer: 0
   m_Name: LavaMultiped
   m_TagString: Untagged
@@ -166,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71a3b6248f04d3487fce4507637f4e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 2
   playerTransform: {fileID: 0}
-  patrolPath: []
   angerDistance: 20
   attackDistance: 2
 --- !u!195 &8306313373020185929
@@ -192,3 +193,23 @@ NavMeshAgent:
   m_BaseOffset: 0.94
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8072729322340251909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2684248735536116546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647c3b4fdf53c13498bd80f52c721e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  died:
+    m_PersistentCalls:
+      m_Calls: []

@@ -7,6 +7,7 @@ namespace Code.Scripts.MainMenu
 {
     public class InGameMenuController: ITickable
     {
+        private readonly GameFlowController _gameFlowController;
         private bool _isGameMenuShown;
         public bool IsGameMenuShown
         {
@@ -21,14 +22,21 @@ namespace Code.Scripts.MainMenu
                     GameMenuShown?.Invoke();
                     Cursor.visible = true;
                     _isGameMenuShown = true;
+                    _gameFlowController.PauseGame();
                 }
                 else
                 {
                     GameMenuHidden?.Invoke();
                     Cursor.visible = false;
                     _isGameMenuShown = false;
+                    _gameFlowController.UnpauseGame();
                 }
             }
+        }
+        
+        public InGameMenuController(GameFlowController gameFlowController)
+        {
+            _gameFlowController = gameFlowController;
         }
 
         public event Action GameMenuShown;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5713519322494238661}
   - component: {fileID: 4884137631050770774}
   - component: {fileID: 5245710947716344795}
+  - component: {fileID: 2684695928875291641}
   m_Layer: 0
   m_Name: LavaMultipedHive
   m_TagString: Untagged
@@ -122,3 +123,23 @@ MonoBehaviour:
   multipedPrefab: {fileID: 2084125656959387657, guid: 3fa73d646dd4027439494af997af2b5b, type: 3}
   spawnPeriod: 2
   patrolRadius: 10
+--- !u!114 &2684695928875291641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3226276149031994138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647c3b4fdf53c13498bd80f52c721e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  died:
+    m_PersistentCalls:
+      m_Calls: []
