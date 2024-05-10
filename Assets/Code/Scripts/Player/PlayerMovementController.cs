@@ -57,7 +57,7 @@ namespace Code.Scripts.PLayer
             currenVelocity = Vector3.MoveTowards(currenVelocity, _targetVelocity, _velocitySpeed * Time.fixedDeltaTime);
             _rigidbody.velocity = new Vector3(currenVelocity.x, _rigidbody.velocity.y, currenVelocity.z);
 
-            _rotationTransform.rotation = Quaternion.RotateTowards(_rotationTransform.rotation,
+            _rotationTransform.localRotation = Quaternion.RotateTowards(_rotationTransform.localRotation,
                 _targetRotation, Time.fixedDeltaTime * _ratationSpeed);
         }     
 
@@ -65,7 +65,7 @@ namespace Code.Scripts.PLayer
         {
             if (!_isOnTheGround) return;          
 
-            transform.forward = _playerMovementInfo.DirectionAxisZ;
+            transform.forward = new Vector3(_playerMovementInfo.DirectionAxisZ.x, 0, _playerMovementInfo.DirectionAxisZ.z);
 
             var inputMovementX = _controls.Player.MovementX.ReadValue<float>();
             var inputMovementZ = _controls.Player.MovementY.ReadValue<float>();
@@ -75,6 +75,8 @@ namespace Code.Scripts.PLayer
 
             _direction = directionX + directionZ;
             _targetVelocity = _direction * _movementSpeed;
+
+            _localDirection = new(inputMovementX, 0, inputMovementZ);
         }
 
         private void CalculateRotation()
@@ -83,7 +85,7 @@ namespace Code.Scripts.PLayer
 
             if (_direction != Vector3.zero) 
             {
-                _targetRotation = Quaternion.LookRotation(_direction);
+                _targetRotation = Quaternion.LookRotation(_localDirection);
             }
         }
 
