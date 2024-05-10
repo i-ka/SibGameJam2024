@@ -44,16 +44,14 @@ public class Blast : MonoBehaviour
                 //    else if (distance >= _radius / 4)
                 //        damage /= 1.2f;
 
-                //    enemy.helth -= damage; // логика урона врагу
+                //    enemy.helth -= damage; // Р»РѕРіРёРєР° СѓСЂРѕРЅР° РІСЂР°РіСѓ
                 //}
             }
             else if (controller)
             {
-                float force = _force / 4;
-                Vector3 direction = new Vector3(-(_radius - (transform.position.x - controller.transform.position.x)* 3), 
-                                    (_radius - (transform.position.y - controller.transform.position.y) * 3),
-                                    (_radius - (transform.position.z - controller.transform.position.z) * 3));
-                controller.ApplyForce(direction);
+                float force = _force / 20;
+                var directionToPlayer = (controller.transform.position - transform.position).normalized;
+                controller.ApplyForce(directionToPlayer * force);
             }
         }
     }
