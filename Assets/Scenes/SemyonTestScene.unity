@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1057,7 +1057,7 @@ Transform:
   m_GameObject: {fileID: 802956095}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.689143, y: -8.452608, z: -28.375942}
+  m_LocalPosition: {x: -7.689143, y: -7.902608, z: -35.545944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1509,8 +1509,32 @@ PrefabInstance:
       value: StarterPlayer Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: Gravity
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: TopClamp
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: JumpHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: BottomClamp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
       propertyPath: kncockbackForce
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: CameraAngleOverride
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: GroundLayers.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1882,17 +1906,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3191327829074217804, guid: 4caee4a0750c9434492b457f55d2be4c, type: 3}
+      propertyPath: Damping.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3191327829074217804, guid: 4caee4a0750c9434492b457f55d2be4c, type: 3}
+      propertyPath: Damping.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3191327829074217804, guid: 4caee4a0750c9434492b457f55d2be4c, type: 3}
+      propertyPath: CameraDistance
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3191327829074217804, guid: 4caee4a0750c9434492b457f55d2be4c, type: 3}
+      propertyPath: VerticalArmLength
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3191327829521414796, guid: 4caee4a0750c9434492b457f55d2be4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.689143
       objectReference: {fileID: 0}
     - target: {fileID: 3191327829521414796, guid: 4caee4a0750c9434492b457f55d2be4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.452608
+      value: -7.902608
       objectReference: {fileID: 0}
     - target: {fileID: 3191327829521414796, guid: 4caee4a0750c9434492b457f55d2be4c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -28.375942
+      value: -35.545944
       objectReference: {fileID: 0}
     - target: {fileID: 3191327829521414796, guid: 4caee4a0750c9434492b457f55d2be4c, type: 3}
       propertyPath: m_LocalRotation.w
