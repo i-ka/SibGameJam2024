@@ -1723,10 +1723,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 790218517465022155, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
-      propertyPath: LockCameraPosition
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3617170722317641166, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.8619881
