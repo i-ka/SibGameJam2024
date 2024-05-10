@@ -13,6 +13,7 @@ namespace Code.Scripts.PLayer
 
         [Header("Rotation")]
         [SerializeField] private float _ratationSpeed;
+        [SerializeField] private float _ratationForwardVectorSpeed;
         [SerializeField] private Transform _rotationTransform;
 
         [Header("Jumping")]
@@ -53,6 +54,8 @@ namespace Code.Scripts.PLayer
         {
             if (_controls == null) return;
 
+            SetTransformForwardVector();
+
             var currenVelocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
             currenVelocity = Vector3.MoveTowards(currenVelocity, _targetVelocity, _velocitySpeed * Time.fixedDeltaTime);
             _rigidbody.velocity = new Vector3(currenVelocity.x, _rigidbody.velocity.y, currenVelocity.z);
@@ -65,8 +68,6 @@ namespace Code.Scripts.PLayer
         {
             if (!_isOnTheGround) return;          
 
-            transform.forward = new Vector3(_playerMovementInfo.DirectionAxisZ.x, 0, _playerMovementInfo.DirectionAxisZ.z);
-
             var inputMovementX = _controls.Player.MovementX.ReadValue<float>();
             var inputMovementZ = _controls.Player.MovementY.ReadValue<float>();
 
@@ -77,6 +78,14 @@ namespace Code.Scripts.PLayer
             _targetVelocity = _direction * _movementSpeed;
 
             _localDirection = new(inputMovementX, 0, inputMovementZ);
+        }
+
+        private void SetTransformForwardVector() 
+        {
+            if (!_isOnTheGround) return;
+
+            var forwardVector = new Vector3(_playerMovementInfo.DirectionAxisZ.x, 0, _playerMovementInfo.DirectionAxisZ.z);
+            transform.forward = Vector3.MoveTowards(transform.forward, forwardVector, Time.fixedDeltaTime * _ratationForwardVectorSpeed);
         }
 
         private void CalculateRotation()
