@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -990,6 +990,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &765199677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765199667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647c3b4fdf53c13498bd80f52c721e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  died:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &802956095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,6 +1751,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4395579388615472214, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 765199668}
+    - targetCorrespondingSourceObject: {fileID: 4395579388615472214, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 765199677}
   m_SourcePrefab: {fileID: 100100000, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
 --- !u!1001 &5721232207844556169
 PrefabInstance:

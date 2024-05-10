@@ -12,6 +12,7 @@ namespace Code.Scripts.Enemy
         public event Action<LavaMultiped> OnDestroyed;  
         private StateMachineRunner _stateMachineRunner;
 
+        [SerializeField] private float damage = 2;
         [SerializeField] private Transform playerTransform;
         private NavMeshAgent _navMeshAgent;
         private EnemyBTContext _btContext;
@@ -46,7 +47,7 @@ namespace Code.Scripts.Enemy
             ), _btContext);
 
             var fightState = new RunBtState<EnemyBTContext>(new RepeatNode(new SequenceNode("AttackSequence",
-                new AttackNode(_btContext, attackDistance),
+                new AttackNode(_btContext, damage, attackDistance),
                 new WaitNode(1)
             )), _btContext);
 
