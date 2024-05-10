@@ -8,6 +8,7 @@ public class Blast : MonoBehaviour
 {
     [SerializeField] private float _radius;
     [SerializeField] private float _force;
+    [SerializeField] private float _upwardsForce;
     private float _maxDamage;
 
     public void Explode()
@@ -22,17 +23,17 @@ public class Blast : MonoBehaviour
             if (rigidbody && !bullet)
             {
                 float distance = Vector3.Distance(transform.position, rigidbody.transform.position);
-                float force = _force;
+                //float force = _force;
 
-                if (distance >= _radius * 0.75f)
-                    force *= 0.25f;
-                else if (distance >= _radius * 0.5f)
-                    force *= 0.6f;
-                else if (distance >= _radius * 0.25f)
-                    force *= 0.85f;
+                //if (distance >= _radius * 0.75f)
+                //    force *= 0.25f;
+                //else if (distance >= _radius * 0.5f)
+                //    force *= 0.6f;
+                //else if (distance >= _radius * 0.25f)
+                //    force *= 0.85f;
 
-                rigidbody.AddExplosionForce(force, transform.position, _radius);
-                print(rigidbody.name + force);
+                rigidbody.AddExplosionForce(_force, transform.position, _radius, 1f);
+                print(rigidbody.name + _force);
                 //Enemy enemy = rigidbody.GetComponent<Enemy>();
                 //if (enemy)
                 //{
@@ -49,11 +50,7 @@ public class Blast : MonoBehaviour
             }
             else if (controller)
             {
-                float force = _force / 4;
-                Vector3 direction = new Vector3(-(_radius - (transform.position.x - controller.transform.position.x)* 3), 
-                                    (_radius - (transform.position.y - controller.transform.position.y) * 3),
-                                    (_radius - (transform.position.z - controller.transform.position.z) * 3));
-                controller.ApplyForce(direction);
+                
             }
         }
     }

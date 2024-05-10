@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7496b4b172229b47906656858d6e02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 45
   _maxDamage: 200
   _blast: {fileID: 738875254024800007}
 --- !u!114 &1779761711858187615
@@ -130,7 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 4
-  _force: 1200
+  _force: 400
+  _upwardsForce: 0
 --- !u!1 &4601819631876982371
 GameObject:
   m_ObjectHideFlags: 0

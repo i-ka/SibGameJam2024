@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using Zenject.SpaceFighter;
@@ -19,6 +20,7 @@ public class RocketGun : MonoBehaviour
 
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _bulletPoint;
+    [SerializeField] private Animator _anim;
 
     private void Start()
     {
@@ -51,12 +53,15 @@ public class RocketGun : MonoBehaviour
             _shotDelay = 0;
             _ammo--;
         }
-        
     }
 
     public void reload()
     {
         _ammo++;
         _gunIsReady = true;
+        if(_ammo < _ammoCount)
+        {
+            _anim.SetTrigger("reload");
+        }
     }
 }
