@@ -12,14 +12,5 @@ public class MainMenuInstaller : MonoInstaller
     {
         Container.Bind<MainMenuController>().FromNew().AsSingle();
         Container.Bind<SettingsController>().FromNew().AsSingle();
-        
-        var settingsMenuInstance = Container.InstantiatePrefabForComponent<SettingsMenuView>(settingsMenu);
-        Container.Bind<SettingsMenuView>().FromInstance(settingsMenuInstance).AsSingle();
-        settingsMenuInstance.gameObject.SetActive(false);
-        
-        var mainMenuInstance = Container.InstantiatePrefabForComponent<MainMenuView>(mainMenu);
-        Container.Bind<MainMenuView>().FromInstance(mainMenuInstance).AsSingle();
-        
-
     }
 }

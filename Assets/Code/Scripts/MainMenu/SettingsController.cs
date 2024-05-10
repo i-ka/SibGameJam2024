@@ -1,12 +1,15 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Code.Scripts.MainMenu
 {
     public class SettingsController
     {
-        public void SetMasterVolume(float masterVolume)
+        public float MasterVolume
         {
-            AudioListener.volume = masterVolume;
+            get => AudioListener.volume;
+            set => AudioListener.volume = value;
         }
     }
 }
