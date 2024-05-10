@@ -155,7 +155,7 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
             _hasAnimator = true;
-            _animator = GetComponentInChildren<Animator>();
+            _animator = GetComponent<Animator>();
         }
 
         private void Update()
@@ -389,6 +389,7 @@ namespace StarterAssets
 
         private void OnFootstep(AnimationEvent animationEvent)
         {
+            return;
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
                 if (FootstepAudioClips.Length > 0)
@@ -401,6 +402,7 @@ namespace StarterAssets
 
         private void OnLand(AnimationEvent animationEvent)
         {
+            return;
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
