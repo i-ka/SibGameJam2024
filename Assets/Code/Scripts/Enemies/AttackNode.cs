@@ -6,11 +6,13 @@ namespace Code.Scripts.Enemy
     public class AttackNode: IBtNode
     {
         private readonly EnemyBTContext _context;
+        private readonly float _damage;
         private readonly float _attackDistance;
 
-        public AttackNode(EnemyBTContext context, float attackDistance)
+        public AttackNode(EnemyBTContext context, float damage, float attackDistance)
         {
             _context = context;
+            _damage = damage;
             _attackDistance = attackDistance;
         }
         
@@ -29,6 +31,12 @@ namespace Code.Scripts.Enemy
             {
                 return BtNodeResult.Failure();
             }
+
+            var canDamage = _context.DetectedPlayer.TryGetComponent<HealthComponent>(out var healthComponent);
+            if (!canDamage) 
+                return BtNodeResult.Failure();
+            
+            healthComponent.ApplyDamage(_damage);
             return BtNodeResult.Success();
         }
 
