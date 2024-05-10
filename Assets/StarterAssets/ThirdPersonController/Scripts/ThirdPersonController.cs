@@ -75,6 +75,8 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        [SerializeField] public float kncockbackForceFade = 2;
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -272,7 +274,7 @@ namespace StarterAssets
             // move the player
             _controller.Move(horizontalDelta + verticalDelta + _horizontalAdditionalMove * Time.deltaTime);
 
-            _horizontalAdditionalMove = Vector3.Lerp(_horizontalAdditionalMove, Vector3.zero, Time.deltaTime);
+            _horizontalAdditionalMove = Vector3.Lerp(_horizontalAdditionalMove, Vector3.zero, Time.deltaTime * kncockbackForceFade);
 
             // update animator if using character
             if (_hasAnimator)
@@ -351,7 +353,7 @@ namespace StarterAssets
             }
         }
 
-        private void ApplyForce(Vector3 vector3)
+        public void ApplyForce(Vector3 vector3)
         {
             _verticalVelocity += vector3.y;
             _horizontalAdditionalMove = new Vector3(vector3.x, 0, vector3.z);
