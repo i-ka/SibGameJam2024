@@ -42,9 +42,8 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        _playerMovementInput = new Vector3(_horizontal, 0, _vertical);
-        Vector3 MoveVector = transform.TransformDirection(_playerMovementInput) * _speed;
-        _rigidbody.velocity = new Vector3(MoveVector.x, _rigidbody.velocity.y, MoveVector.z);
+        Vector3 movement = new Vector3(_horizontal, 0.0f, _vertical);
+        transform.Translate(movement * _speed * Time.fixedDeltaTime);
     }
 
     private void jump()
@@ -63,13 +62,13 @@ public class Movement : MonoBehaviour
         {
             _isGrounded = true;
             _speed = _speedDefult;
-            _anim.SetBool("IsGround", true);
+            //_anim.SetBool("IsGround", true);
         }
         else
         {
             _isGrounded = false;
-            _speed = _speedDefult / 8f;
-            _anim.SetBool("IsGround", false);
+            _speed = _speedDefult / 2.5f;
+            //_anim.SetBool("IsGround", false);
         }
     }
 }

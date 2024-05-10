@@ -18,22 +18,12 @@ public class Blast : MonoBehaviour
         foreach (var collider in overLappedColliders)
         {
             Bullet bullet = collider.GetComponent<Bullet>();
-            ThirdPersonController controller = collider.GetComponent<ThirdPersonController>();
+            Movement player = collider.GetComponent<Movement>();
             Rigidbody rigidbody = collider.attachedRigidbody;
             if (rigidbody && !bullet)
             {
-                float distance = Vector3.Distance(transform.position, rigidbody.transform.position);
-                //float force = _force;
-
-                //if (distance >= _radius * 0.75f)
-                //    force *= 0.25f;
-                //else if (distance >= _radius * 0.5f)
-                //    force *= 0.6f;
-                //else if (distance >= _radius * 0.25f)
-                //    force *= 0.85f;
-
-                rigidbody.AddExplosionForce(_force, transform.position, _radius, 1f);
-                print(rigidbody.name + _force);
+                rigidbody.AddExplosionForce(_force, transform.position, _radius, _upwardsForce, ForceMode.Impulse);
+                //print(rigidbody.name + _force);
                 //Enemy enemy = rigidbody.GetComponent<Enemy>();
                 //if (enemy)
                 //{
@@ -47,10 +37,6 @@ public class Blast : MonoBehaviour
 
                 //    enemy.helth -= damage; // логика урона врагу
                 //}
-            }
-            else if (controller)
-            {
-                
             }
         }
     }
