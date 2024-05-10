@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -9,18 +10,14 @@ public class Blast : MonoBehaviour
     [SerializeField] private float _force;
     private float _maxDamage;
 
-    private void OnEnable()
+    public void Explode()
     {
-        StartCoroutine(Off());
-        Explode();
-    }
-
-    private void Explode()
-    {
+        StartCoroutine(destroy());
         Collider[] overLappedColliders = Physics.OverlapSphere(transform.position, _radius);
         foreach (var collider in overLappedColliders)
         {
             Bullet bullet = collider.GetComponent<Bullet>();
+            ThirdPersonController controller = collider.GetComponent<ThirdPersonController>();
             Rigidbody rigidbody = collider.attachedRigidbody;
             if (rigidbody && !bullet)
             {
@@ -50,6 +47,14 @@ public class Blast : MonoBehaviour
                 //    enemy.helth -= damage; // логика урона врагу
                 //}
             }
+            else if (controller)
+            {
+                float force = _force / 4;
+                Vector3 direction = new Vector3(-(_radius - (transform.position.x - controller.transform.position.x)* 3), 
+                                    (_radius - (transform.position.y - controller.transform.position.y) * 3),
+                                    (_radius - (transform.position.z - controller.transform.position.z) * 3));
+                controller.ApplyForce(direction);
+            }
         }
     }
 
@@ -59,10 +64,10 @@ public class Blast : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _radius);
     }
 
-    IEnumerator Off()
+    private IEnumerator destroy()
     {
         yield return new WaitForSeconds(1.5f);
-        gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 
 }
