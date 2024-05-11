@@ -21,6 +21,7 @@ public class TestPlayer : MonoBehaviour
     public void Construct(GameStateController gameStateController)
     {
         _gameStateController = gameStateController;
+        _gameStateController.GameFinished += OnGameFinished;
     }
 
     private void Awake()
@@ -33,9 +34,24 @@ public class TestPlayer : MonoBehaviour
 
     public void OnDead()
     {
+        StartCoroutine(DeathSequence());
+    }
+
+    private void OnGameFinished()
+    {
+        _controller.DisableMove = true;
+        _controller.LockCameraPosition = true;
+    }
+
+    private IEnumerator DeathSequence()
+    {
         _animator.SetTrigger(Death);
         _controller.DisableMove = true;
         _rocketLauncher.enabled = false;
+
+        yield return new WaitForSeconds(1);
+        
         _gameStateController.PlayerDied();
+        _controller.LockCameraPosition = true;
     }
 }
