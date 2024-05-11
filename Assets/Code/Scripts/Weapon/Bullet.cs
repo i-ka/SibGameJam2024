@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Enemy"))
         {
-            //получение макс урона врагом
+            //РїРѕР»СѓС‡РµРЅРёРµ РјР°РєСЃ СѓСЂРѕРЅР° РІСЂР°РіРѕРј
         }
 
         if (!_exploded && !coll.gameObject.CompareTag("Player"))

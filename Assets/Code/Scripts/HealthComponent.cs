@@ -6,25 +6,26 @@ using UnityEngine.Events;
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float currentHealth;
+    [field:SerializeField] public float MaxHealth { get; private set; }
+    [field:SerializeField] public float CurrentHealth { get; private set; }
 
     [SerializeField] private UnityEvent<float> healthChanged;
     [SerializeField] private UnityEvent died;
 
     public void Awake()
     {
-        currentHealth = maxHealth;
+        CurrentHealth = MaxHealth;
+        healthChanged?.Invoke(CurrentHealth / MaxHealth);
     }
 
     public void ApplyDamage(float damage)
     {
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
             return;
 
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth) ;
-        healthChanged?.Invoke(currentHealth);
-        if (currentHealth <= 0)
+        CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, MaxHealth) ;
+        healthChanged?.Invoke(CurrentHealth / MaxHealth);
+        if (CurrentHealth <= 0)
         {
             died?.Invoke();
             
