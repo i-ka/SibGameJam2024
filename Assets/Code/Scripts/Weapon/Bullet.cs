@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _maxDamage;
+    [SerializeField] private AudioClip impactSound;
     public VisualEffect _blast;
 
     private Blast _blastLogic;
@@ -35,6 +36,8 @@ public class Bullet : MonoBehaviour
             _exploded = true;
             _blast.SendEvent("OnHit");
             _rigidbody.velocity = new Vector3(0, 0, 0);
+            if (impactSound)
+                AudioSource.PlayClipAtPoint(impactSound, transform.position);
             _blastLogic.Explode();
         }
     }

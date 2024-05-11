@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 15
   _maxDamage: 200
+  impactSound: {fileID: 8300000, guid: 4191c27c51e712d4983f37dcef6ec7a9, type: 3}
   _blast: {fileID: 738875254024800007}
 --- !u!114 &1779761711858187615
 MonoBehaviour:

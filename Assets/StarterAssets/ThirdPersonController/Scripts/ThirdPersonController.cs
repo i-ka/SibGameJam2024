@@ -333,7 +333,6 @@ namespace StarterAssets
                     if (_hasAnimator)
                     {
                         _animator.SetBool(_animIDJump, true);
-                        _jetpackEffect.SendEvent("OnJump");
                     }
                 }
 
@@ -366,7 +365,7 @@ namespace StarterAssets
                 if (_input.jump && _fallTimeoutDelta <= 0.0f)
                 {
                     _rocketLauncherShoot.ShootJetpack();
-                    _jetpackEffect.SendEvent("");
+                    _jetpackEffect.SendEvent("OnJump");
                 }
 
                 // if we are not grounded, do not jump
