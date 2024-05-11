@@ -10,6 +10,7 @@ namespace Code.Scripts.Enemy
         public Transform DetectedPlayer { get; set; }
         public Transform Self { get; set; }
         public NavMeshAgent NavMeshAgent { get; set; }
+        public bool IsDying { get; set; }
         
         public HiveContext Hive { get; set; }
     }
