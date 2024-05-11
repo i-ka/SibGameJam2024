@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Code.Scripts;
 using StarterAssets;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(HealthComponent))]
 public class TestPlayer : MonoBehaviour
@@ -13,6 +15,13 @@ public class TestPlayer : MonoBehaviour
     private ThirdPersonController _controller;
     private RocketLauncherShoot _rocketLauncher;
     private static readonly int Death = Animator.StringToHash("Death");
+    private GameStateController _gameStateController;
+
+    [Inject]
+    public void Construct(GameStateController gameStateController)
+    {
+        _gameStateController = gameStateController;
+    }
 
     private void Awake()
     {
@@ -27,5 +36,6 @@ public class TestPlayer : MonoBehaviour
         _animator.SetTrigger(Death);
         _controller.DisableMove = true;
         _rocketLauncher.enabled = false;
+        _gameStateController.PlayerDied();
     }
 }

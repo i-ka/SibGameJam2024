@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Code.Scripts;
 using Code.Scripts.Enemy;
 using UnityEngine;
 using Zenject;
@@ -15,13 +16,15 @@ public class LavaMultipedHive : MonoBehaviour
     private float _spawnTimer = 0;
     private readonly HashSet<LavaMultiped> _spawnedMultipeds = new ();
     private TestPlayer _player;
+    private GameStateController _gameStateController;
     private HiveContext _hiveContext;
     private bool dying = false;
 
     [Inject]
-    public void Construct(TestPlayer testPlayer)
+    public void Construct(TestPlayer testPlayer, GameStateController gameStateController)
     {
         _player = testPlayer;
+        _gameStateController = gameStateController;
         _hiveContext = new HiveContext
         {
             PatrolRadius = patrolRadius,
@@ -54,6 +57,7 @@ public class LavaMultipedHive : MonoBehaviour
 
     public void OnDead()
     {
+        _gameStateController.HiveDestroy();
         StartCoroutine(DeadSequence());
     }
     

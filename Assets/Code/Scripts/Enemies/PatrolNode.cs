@@ -38,7 +38,7 @@ namespace Code.Scripts.Enemy
                 }
             }
 
-            var hivePosition = _context.Hive.HivePosition.position;
+            var hivePosition = _context.Hive.HivePosition?.position ?? _context.Self.transform.position;
             if (_targetPosition == null)
             {
                 _targetPosition = hivePosition + Random.insideUnitSphere * _context.Hive.PatrolRadius;
