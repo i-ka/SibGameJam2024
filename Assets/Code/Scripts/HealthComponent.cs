@@ -12,6 +12,7 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] private UnityEvent<float> healthChanged;
     [SerializeField] private UnityEvent died;
     [SerializeField] private UnityEvent<float> damaged;
+    [SerializeField] private UnityEvent<float> _heal;
 
     public void Awake()
     {
@@ -31,6 +32,15 @@ public class HealthComponent : MonoBehaviour
         {
             died?.Invoke();
         }
+    }
+    public void ApplyHeal(float heal)
+    {
+        if (CurrentHealth >= MaxHealth)
+            return;
+
+        CurrentHealth = Mathf.Clamp(CurrentHealth + heal, 0, MaxHealth);
+        healthChanged?.Invoke(CurrentHealth / MaxHealth);
+        _heal?.Invoke(heal);
     }
 
 }
