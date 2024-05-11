@@ -7,39 +7,30 @@ public class ColliderDamage : MonoBehaviour
 {
     [SerializeField] float _damagePerSecond;
     [SerializeField] float _delay;
+    [SerializeField] float _timer = 0f;
     [SerializeField] bool _damageToEnemies;
-    private HealthComponent _healthComponent;
 
-    private void OnCollisionEnter(Collision coll)
+    private void OnCollisionStay(Collision collision)
     {
-        if (coll.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            _healthComponent = coll.gameObject.GetComponent<HealthComponent>();
-            HealthComponent healthComponent = _healthComponent;
-            StartCoroutine(damageEverySecond(healthComponent));
+            HealthComponent component = collision.gameObject.GetComponent<HealthComponent>();
+            _timer += Time.deltaTime;
+            if(_timer >= _delay)
+            {
+                component.ApplyDamage(_damagePerSecond);
+                _timer = 0f;
+            }
         }
-        else if (coll.gameObject.CompareTag("Enemy") && _damageToEnemies)
+        else if(collision.gameObject.CompareTag("Enemy") && _damageToEnemies)
         {
-            _healthComponent = coll.gameObject.GetComponent<HealthComponent>();
-            HealthComponent healthComponent = _healthComponent;
-            StartCoroutine(damageEverySecond(healthComponent));
-        }
-    }
-
-    private void OnCollisionExit(Collision coll)
-    {
-        if (coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy"))
-        {
-            StopAllCoroutines();
-        }
-    }
-
-    IEnumerator damageEverySecond(HealthComponent component)
-    {
-        while (true)
-        {
-            component.ApplyDamage(_damagePerSecond);
-            yield return new WaitForSecondsRealtime(_delay);
+            HealthComponent component = collision.gameObject.GetComponent<HealthComponent>();
+            _timer += Time.deltaTime;
+            if (_timer >= _delay)
+            {
+                component.ApplyDamage(_damagePerSecond);
+                _timer = 0f;
+            }
         }
     }
 }
