@@ -19,6 +19,7 @@ public class RocketLauncherShoot : MonoBehaviour
 
     private void OnReload()
     {
+        Debug.Log("Reload pressed");
         if (!enabled) return;
         _rocketLauncher.Reload();
     }
