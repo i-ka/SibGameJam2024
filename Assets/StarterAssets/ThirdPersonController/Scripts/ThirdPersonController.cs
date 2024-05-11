@@ -1,4 +1,5 @@
 ﻿ using UnityEngine;
+ using UnityEngine.VFX;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -114,6 +115,10 @@ namespace StarterAssets
         private bool _hasAnimator;
 
         private Vector3 _additionalMove;
+        [SerializeField] private VisualEffect _jetpackEffect;
+
+        private HealthComponent health;
+        [SerializeField] public LayerMask lava;
 
         private bool IsCurrentDeviceMouse
         {
@@ -142,7 +147,7 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+            health = GetComponent<HealthComponent>();
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -190,6 +195,13 @@ namespace StarterAssets
                 transform.position.z);
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
                 QueryTriggerInteraction.Ignore);
+            
+            var isInLava = Physics.CheckSphere(spherePosition, GroundedRadius, lava,
+                QueryTriggerInteraction.Ignore);
+            if (isInLava)
+            {
+                health.ApplyDamage(45 * Time.deltaTime);
+            }
 
             // update animator if using character
             if (_hasAnimator)
@@ -297,7 +309,7 @@ namespace StarterAssets
             {
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
-
+                _jetpackEffect.SendEvent("SmokeOff");
                 // update animator if using character
                 if (_hasAnimator)
                 {
@@ -321,6 +333,7 @@ namespace StarterAssets
                     if (_hasAnimator)
                     {
                         _animator.SetBool(_animIDJump, true);
+                        _jetpackEffect.SendEvent("OnJump");
                     }
                 }
 
@@ -329,6 +342,7 @@ namespace StarterAssets
                 {
                     _jumpTimeoutDelta -= Time.deltaTime;
                 }
+                
             }
             else
             {
@@ -352,6 +366,7 @@ namespace StarterAssets
                 if (_input.jump && _fallTimeoutDelta <= 0.0f)
                 {
                     _rocketLauncherShoot.ShootJetpack();
+                    _jetpackEffect.SendEvent("");
                 }
 
                 // if we are not grounded, do not jump
@@ -396,12 +411,12 @@ namespace StarterAssets
 
         private void OnFootstep(AnimationEvent animationEvent)
         {
-            return;
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
+                    Debug.Log($"Play step on idnex {index}");
                     AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
             }
@@ -409,7 +424,6 @@ namespace StarterAssets
 
         private void OnLand(AnimationEvent animationEvent)
         {
-            return;
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
