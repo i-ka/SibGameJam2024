@@ -117,6 +117,9 @@ namespace StarterAssets
         private Vector3 _additionalMove;
         [SerializeField] private VisualEffect _jetpackEffect;
 
+        private HealthComponent health;
+        [SerializeField] public LayerMask lava;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -144,7 +147,7 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+            health = GetComponent<HealthComponent>();
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -192,6 +195,13 @@ namespace StarterAssets
                 transform.position.z);
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
                 QueryTriggerInteraction.Ignore);
+            
+            var isInLava = Physics.CheckSphere(spherePosition, GroundedRadius, lava,
+                QueryTriggerInteraction.Ignore);
+            if (isInLava)
+            {
+                health.ApplyDamage(45 * Time.deltaTime);
+            }
 
             // update animator if using character
             if (_hasAnimator)

@@ -27,6 +27,9 @@ namespace Code.Scripts.Weapon.RocketLauncher
         [SerializeField] private UnityEvent<int> AmmoCountChanged;
         [SerializeField] private UnityEvent RealodStarted;
         [SerializeField] private UnityEvent ReloadEnded;
+
+        [SerializeField] private AudioClip shootSound;
+        [SerializeField] private AudioClip reloladSound;
         
 
         private void Start()
@@ -50,6 +53,7 @@ namespace Code.Scripts.Weapon.RocketLauncher
                 Instantiate(_bulletPrefab, _bulletPoint.position, _bulletPoint.rotation);
                 _shotDelay = 0;
                 _ammo--;
+                AudioSource.PlayClipAtPoint(shootSound, transform.position);
                 AmmoCountChanged?.Invoke(_ammo);
             }
         
@@ -69,10 +73,12 @@ namespace Code.Scripts.Weapon.RocketLauncher
             }
             _isReloadInProgress = true;
             RealodStarted?.Invoke();
+            
             while (_ammo < _ammoCount)
             {
                 _ammo++;
                 AmmoCountChanged?.Invoke(_ammo);
+                AudioSource.PlayClipAtPoint(reloladSound, transform.position);
                 yield return new WaitForSeconds(1.0f);
             }
             ReloadEnded?.Invoke();

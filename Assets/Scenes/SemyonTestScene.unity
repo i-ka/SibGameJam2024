@@ -12668,9 +12668,17 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 880824748887009924, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 43ee6a71e70d71a4ebd4d0cc90ad3681, type: 3}
+    - target: {fileID: 880824748887009924, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
       propertyPath: _reloadTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 880824748887009924, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: reloladSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e3fdc0236636a0544b9e7ca94aa1ea14, type: 3}
     - target: {fileID: 880824748887009924, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
       propertyPath: ReloadEnded.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -12820,6 +12828,10 @@ PrefabInstance:
       value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: lava.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
       propertyPath: kncockbackForce
       value: 4
       objectReference: {fileID: 0}
@@ -12829,7 +12841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
       propertyPath: GroundLayers.m_Bits
-      value: 64
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
       propertyPath: kncockbackForceFade
@@ -17078,7 +17090,7 @@ GameObject:
   - component: {fileID: 2091426938}
   - component: {fileID: 2091426937}
   - component: {fileID: 2091426936}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
