@@ -13,6 +13,8 @@ namespace Code.Scripts.Enemy
         public bool IsDying { get; set; }
         
         public HiveContext Hive { get; set; }
+        
+        public Animator Animator { get; set; }
     }
 
     public class HiveContext
