@@ -3487,13 +3487,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179497018}
   serializedVersion: 2
-  m_LocalRotation: {x: 1.3421135e-18, y: 0.99266636, z: 1.10208135e-17, w: 0.12088683}
+  m_LocalRotation: {x: 0.010936754, y: 0.98859555, z: -0.089807555, w: 0.120391086}
   m_LocalPosition: {x: 69.52, y: 7.14, z: 74.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 166.113, z: 0}
+  m_LocalEulerAnglesHint: {x: 10.381, y: 166.113, z: 0}
 --- !u!1001 &224241674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4602,6 +4602,10 @@ PrefabInstance:
       propertyPath: spawnPeriod
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5245710947716344795, guid: e1eb9145dbc8444f6b290d1e76ea398b, type: 3}
+      propertyPath: multipedPrefab
+      value: 
+      objectReference: {fileID: 2084125656959387657, guid: 3fa73d646dd4027439494af997af2b5b, type: 3}
     - target: {fileID: 5245710947716344795, guid: e1eb9145dbc8444f6b290d1e76ea398b, type: 3}
       propertyPath: totalMultipedsToSpawn
       value: 5
@@ -8284,6 +8288,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5245710947716344795, guid: e1eb9145dbc8444f6b290d1e76ea398b, type: 3}
+      propertyPath: multipedPrefab
+      value: 
+      objectReference: {fileID: 2084125656959387657, guid: 762b9db5499e1434196bf190ad27baa1, type: 3}
+    - target: {fileID: 5245710947716344795, guid: e1eb9145dbc8444f6b290d1e76ea398b, type: 3}
       propertyPath: totalMultipedsToSpawn
       value: 3
       objectReference: {fileID: 0}
@@ -8851,6 +8859,10 @@ PrefabInstance:
       propertyPath: spawnPeriod
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5245710947716344795, guid: e1eb9145dbc8444f6b290d1e76ea398b, type: 3}
+      propertyPath: multipedPrefab
+      value: 
+      objectReference: {fileID: 2084125656959387657, guid: 762b9db5499e1434196bf190ad27baa1, type: 3}
     - target: {fileID: 5245710947716344795, guid: e1eb9145dbc8444f6b290d1e76ea398b, type: 3}
       propertyPath: totalMultipedsToSpawn
       value: 3
