@@ -4,6 +4,7 @@ using Code.Scripts.StateMachine;
 using Code.Scripts.StateMachine.BtNodes;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Code.Scripts.Enemy
 {
@@ -26,6 +27,14 @@ namespace Code.Scripts.Enemy
         private static readonly int SpeedAnimationPropertyId = Animator.StringToHash("MotionSpeed");
         private static readonly int Death = Animator.StringToHash("Death");
         private static readonly int AwakeAnimationId = Animator.StringToHash("Awake");
+
+        private GameStateController _gameStateController;
+
+        [Inject]
+        public void Construct(GameStateController gameStateController)
+        {
+            _gameStateController = gameStateController;
+        }
 
         private void Awake()
         {
@@ -89,6 +98,7 @@ namespace Code.Scripts.Enemy
 
         public void OnDead()
         {
+            _gameStateController.EnemyKilled();
             StartCoroutine(PlayDeadSequence());
         }
 
