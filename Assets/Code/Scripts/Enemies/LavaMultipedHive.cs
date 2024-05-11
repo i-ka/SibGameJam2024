@@ -18,10 +18,11 @@ public class LavaMultipedHive : MonoBehaviour
     private TestPlayer _player;
     private GameStateController _gameStateController;
     private HiveContext _hiveContext;
+    private DiContainer _container;
     private bool dying = false;
 
     [Inject]
-    public void Construct(TestPlayer testPlayer, GameStateController gameStateController)
+    public void Construct(TestPlayer testPlayer, GameStateController gameStateController, DiContainer container)
     {
         _player = testPlayer;
         _gameStateController = gameStateController;
@@ -30,6 +31,7 @@ public class LavaMultipedHive : MonoBehaviour
             PatrolRadius = patrolRadius,
             HivePosition = transform
         };
+        _container = container;
     }
 
     private void Update()
@@ -48,7 +50,7 @@ public class LavaMultipedHive : MonoBehaviour
         if (_spawnedMultipeds.Count >= totalMultipedsToSpawn)
             return;
         
-        var multiped = Instantiate(multipedPrefab, transform.position, Quaternion.identity);
+        var multiped = _container.InstantiatePrefabForComponent<LavaMultiped>(multipedPrefab, transform.position, Quaternion.identity, null);
         _spawnedMultipeds.Add(multiped);
         multiped.SetPLayer(_player);
         multiped.SetHive(_hiveContext);

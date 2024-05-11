@@ -9,8 +9,11 @@ namespace Code.Scripts
         public event Action GameFinished;
         
         private readonly GameGoalSettings _goalSettings;
-        private int destroyedHives = 0;
+        
         public bool IsOver { get; private set; } = false;
+        public bool IsWin { get; private set; }
+        public int DestroyedHives { get; private set; }
+        public int DestroyedEnemies { get; private set; }
 
         private GameStateController(GameGoalSettings goalSettings)
         {
@@ -20,19 +23,26 @@ namespace Code.Scripts
         public void PlayerDied()
         {
             IsOver = true;
+            IsWin = false;
             GameOver?.Invoke();
             Debug.Log("Player died. Game over");
         }
 
         public void HiveDestroy()
         {
-            destroyedHives++;
-            if (destroyedHives >= _goalSettings.CountHivesToDestroy)
+            DestroyedHives++;
+            if (DestroyedHives >= _goalSettings.CountHivesToDestroy)
             {
                 IsOver = true;
+                IsWin = true;
                 GameFinished?.Invoke();
                 Debug.Log("Yapeee!!! Player finished the game");
             }
+        }
+
+        public void EnemyKilled()
+        {
+            DestroyedEnemies++;
         }
     }
 }
