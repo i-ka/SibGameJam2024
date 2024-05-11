@@ -13,16 +13,19 @@ public class RocketLauncherShoot : MonoBehaviour
 
     private void OnFire()
     {
+        if (!enabled) return;
         _rocketLauncher.Shoot();
     }
 
     private void OnReload()
     {
+        if (!enabled) return;
         _rocketLauncher.Reload();
     }
 
     public void ShootJetpack()
     {
+        if (!enabled) return;
         _rocketGun.shoot();
     }
 }
