@@ -187,6 +187,34 @@ PrefabInstance:
       propertyPath: <MaxHealth>k__BackingField
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4630303503179282364, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630303503179282364, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630303503179282364, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6613955744938854484}
+    - target: {fileID: 4630303503179282364, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630303503179282364, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDead
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630303503179282364, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TestPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630303503179282364, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6551538402268639390, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
     m_RemovedGameObjects:
@@ -254,6 +282,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rocketLauncher: {fileID: 880824748887009924}
   _rocketGun: {fileID: 5097726588963736791}
+--- !u!114 &6613955744938854484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9209498028058996267, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+  m_PrefabInstance: {fileID: 2596263735658145407}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803678692364636713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca35ca2862f434b48b1874818a573152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4131286646709956492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -374,13 +413,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4676685749965078700, guid: 996ccd9f56ab4db4fbd48fbf3994b29e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8969756395284344019, guid: 996ccd9f56ab4db4fbd48fbf3994b29e, type: 3}
       propertyPath: m_Name
       value: RocketGun
       objectReference: {fileID: 0}
     - target: {fileID: 8969756395284344019, guid: 996ccd9f56ab4db4fbd48fbf3994b29e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1987601035576437029, guid: 996ccd9f56ab4db4fbd48fbf3994b29e, type: 3}
