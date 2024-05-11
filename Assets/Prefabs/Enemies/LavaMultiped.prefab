@@ -166,9 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71a3b6248f04d3487fce4507637f4e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 2
   playerTransform: {fileID: 0}
-  patrolPath: []
-  angerDistance: 20
+  angerDistance: 30
   attackDistance: 2
 --- !u!195 &8306313373020185929
 NavMeshAgent:
