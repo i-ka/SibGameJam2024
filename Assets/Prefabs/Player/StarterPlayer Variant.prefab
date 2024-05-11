@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rocketLauncher: {fileID: 880824748887009924}
+  _rocketGun: {fileID: 0}
 --- !u!1001 &4131286646709956492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -381,7 +382,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1987601035576437029, guid: 996ccd9f56ab4db4fbd48fbf3994b29e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

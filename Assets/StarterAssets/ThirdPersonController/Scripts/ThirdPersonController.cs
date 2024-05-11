@@ -126,6 +126,8 @@ namespace StarterAssets
             }
         }
 
+        private RocketLauncherShoot _rocketLauncherShoot;
+
 
         private void Awake()
         {
@@ -148,7 +150,7 @@ namespace StarterAssets
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
-
+            _rocketLauncherShoot = GetComponent<RocketLauncherShoot>();
             AssignAnimationIDs();
 
             // reset our timeouts on start
@@ -160,8 +162,6 @@ namespace StarterAssets
 
         private void Update()
         {
-            
-
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -345,6 +345,11 @@ namespace StarterAssets
                     {
                         _animator.SetBool(_animIDFreeFall, true);
                     }
+                }
+
+                if (_input.jump && _fallTimeoutDelta <= 0.0f)
+                {
+                    _rocketLauncherShoot.ShootJetpack();
                 }
 
                 // if we are not grounded, do not jump
