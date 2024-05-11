@@ -132,6 +132,8 @@ MonoBehaviour:
   _radius: 4
   _force: 1200
   _playerKnockbackReductionRatio: 15
+  _pushesPlayer: 1
+  _damage: 100
 --- !u!1 &4601819631876982371
 GameObject:
   m_ObjectHideFlags: 0
