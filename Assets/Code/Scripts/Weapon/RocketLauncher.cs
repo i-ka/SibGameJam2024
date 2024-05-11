@@ -51,6 +51,8 @@ namespace Code.Scripts.Weapon.RocketLauncher
 
         public void Reload()
         {
+            if (_ammo >= _ammoCount)
+                return;
             _ammo++;
             _gunIsReady = true;
             AmmoCountChanged?.Invoke(_ammo);
