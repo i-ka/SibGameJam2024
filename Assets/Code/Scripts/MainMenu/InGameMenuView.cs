@@ -25,8 +25,8 @@ public class InGameMenuView : MonoBehaviour
         _controller.GameMenuHidden += OnCloseGameMenu;
 
         _gameStateController = gameStateController;
-        _gameStateController.GameOver += ShowLooseMenu;
-        _gameStateController.GameFinished += ShowWinMenu;
+        _gameStateController.GameOver += ShowGameOverMenu;
+        _gameStateController.GameFinished += ShowGameOverMenu;
     }
     
     public void OnSettingsButton()
