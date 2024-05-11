@@ -1,5 +1,6 @@
 using Code.Scripts.MainMenu;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Zenject;
 
@@ -9,6 +10,8 @@ public class MainMenuView : MonoBehaviour
     [SerializeField]
     private GameObject settingsMenu;
 
+    [SerializeField] private string startGameSceneName;
+
     [Inject]
     public void Construct(MainMenuController mainMenuController)
     {
@@ -17,7 +20,7 @@ public class MainMenuView : MonoBehaviour
 
     public void OnGameStartButton()
     {
-        _controller.StartGame();
+        SceneManager.LoadScene(startGameSceneName);
     }
 
     public void OnGameSettings()
