@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f2106f30a041f3ac6de2bb2b3838c7, type: 3}
   m_Name: GoalSettings
   m_EditorClassIdentifier: 
-  CountHivesToDestroy: 1
+  CountHivesToDestroy: 5

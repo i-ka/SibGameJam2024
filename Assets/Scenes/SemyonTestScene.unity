@@ -15561,7 +15561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33114daac08f4bc78245530f8a2748e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalSettings: {fileID: 0}
+  goalSettings: {fileID: 11400000, guid: 67783edf868076b42b7a29990cc4a270, type: 2}
 --- !u!114 &1967717757
 MonoBehaviour:
   m_ObjectHideFlags: 0

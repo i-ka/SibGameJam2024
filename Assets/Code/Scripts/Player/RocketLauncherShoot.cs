@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Code.Scripts.Weapon.RocketLauncher;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class RocketLauncherShoot : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class RocketLauncherShoot : MonoBehaviour
 
     //this is jetpack!!!
     [SerializeField] private RocketGun _rocketGun;
+    [SerializeField] private VisualEffect _jetpackEffect;
 
     private void OnFire()
     {
@@ -28,5 +30,6 @@ public class RocketLauncherShoot : MonoBehaviour
     {
         if (!enabled) return;
         _rocketGun.shoot();
+        _jetpackEffect.SendEvent("OnJump");
     }
 }
