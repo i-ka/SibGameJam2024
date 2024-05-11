@@ -76,6 +76,7 @@ namespace StarterAssets
         public bool LockCameraPosition = false;
 
         [SerializeField] public float kncockbackForceFade = 2;
+        public bool DisableMove { get; set; } = false;
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -162,6 +163,7 @@ namespace StarterAssets
 
         private void Update()
         {
+            if (DisableMove) return;
             JumpAndGravity();
             GroundedCheck();
             Move();
