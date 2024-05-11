@@ -25,8 +25,8 @@ public class InGameMenuView : MonoBehaviour
         _controller.GameMenuHidden += OnCloseGameMenu;
 
         _gameStateController = gameStateController;
-        _gameStateController.GameOver += ShowLooseMenu;
-        _gameStateController.GameFinished += ShowWinMenu;
+        _gameStateController.GameOver += ShowGameOverMenu;
+        _gameStateController.GameFinished += ShowGameOverMenu;
 
     }
     
@@ -46,28 +46,21 @@ public class InGameMenuView : MonoBehaviour
         _controller.ToMainMenu();
     }
 
-    public void OnOpenInGameMenu()
+    private void OnOpenInGameMenu()
     {
         gameObject.SetActive(true);
         inGameInterface.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void OnCloseGameMenu()
+    private void OnCloseGameMenu()
     {
         gameObject.SetActive(false);
         inGameInterface.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void ShowWinMenu()
-    {
-        inGameInterface.SetActive(false);
-        winInterface.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    public void ShowLooseMenu()
+    private void ShowGameOverMenu()
     {
         inGameInterface.SetActive(false);
         looseInterface.SetActive(true);
