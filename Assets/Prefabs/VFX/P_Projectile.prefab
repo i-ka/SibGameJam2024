@@ -32,7 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4765326330962404426}
   - {fileID: 930255941010745075}
@@ -131,6 +131,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _radius: 4
   _force: 1200
+  _playerKnockbackReductionRatio: 15
+  _pushesPlayer: 1
+  _damage: 100
 --- !u!1 &4601819631876982371
 GameObject:
   m_ObjectHideFlags: 0

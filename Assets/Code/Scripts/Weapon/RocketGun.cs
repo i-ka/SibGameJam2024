@@ -36,14 +36,14 @@ public class RocketGun : MonoBehaviour
         //    _playerAnim.SetTrigger("reload");
         //    _gunIsReady = false;
         //}
-        if (Input.GetButtonDown("Fire1"))
-        {
-            if (_ammo > 0)
-                shoot();
-        }
+        // if (Input.GetButtonDown("Fire1"))
+        // {
+        //     if (_ammo > 0)
+        //         shoot();
+        // }
     }
 
-    private void shoot()
+    public void shoot()
     {
         if(_gunIsReady && _shotDelay >= _delay)
         {

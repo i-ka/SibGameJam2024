@@ -16,6 +16,7 @@ public class LavaMultipedHive : MonoBehaviour
     private readonly HashSet<LavaMultiped> _spawnedMultipeds = new ();
     private TestPlayer _player;
     private HiveContext _hiveContext;
+    private bool dying = false;
 
     [Inject]
     public void Construct(TestPlayer testPlayer)
@@ -40,6 +41,7 @@ public class LavaMultipedHive : MonoBehaviour
 
     public void SpawnMultiped()
     {
+        if (dying) return;
         if (_spawnedMultipeds.Count >= totalMultipedsToSpawn)
             return;
         
@@ -48,5 +50,16 @@ public class LavaMultipedHive : MonoBehaviour
         multiped.SetPLayer(_player);
         multiped.SetHive(_hiveContext);
         multiped.OnDestroyed += m => _spawnedMultipeds.Remove(m);
+    }
+
+    public void OnDead()
+    {
+        StartCoroutine(DeadSequence());
+    }
+    
+    private IEnumerator DeadSequence()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 }

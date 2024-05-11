@@ -8,6 +8,7 @@ namespace Code.Scripts.Enemy
         private readonly EnemyBTContext _context;
         private readonly float _damage;
         private readonly float _attackDistance;
+        private static readonly int Attack = Animator.StringToHash("Attack");
 
         public AttackNode(EnemyBTContext context, float damage, float attackDistance)
         {
@@ -18,6 +19,8 @@ namespace Code.Scripts.Enemy
         
         public void OnEnter()
         {
+            _context.Animator.SetTrigger(Attack);
+            
         }
 
         public BtNodeResult Tick()
@@ -29,12 +32,16 @@ namespace Code.Scripts.Enemy
             var sqrPlayerDistance = vectorToPlayer.sqrMagnitude;
             if (sqrPlayerDistance > Mathf.Pow(_attackDistance, 2))
             {
+                _context.Animator.ResetTrigger(Attack);
                 return BtNodeResult.Failure();
             }
 
             var canDamage = _context.DetectedPlayer.TryGetComponent<HealthComponent>(out var healthComponent);
-            if (!canDamage) 
+            if (!canDamage)
+            {
+                _context.Animator.ResetTrigger(Attack);
                 return BtNodeResult.Failure();
+            }
             
             healthComponent.ApplyDamage(_damage);
             return BtNodeResult.Success();
