@@ -9,8 +9,8 @@ namespace Code.Scripts.Enemy
         private readonly float _angerDistance;
         private readonly float _attackDistance;
         
-        private static readonly int AngryPropertyId = Animator.StringToHash("Angry");
-        private static readonly int Awake = Animator.StringToHash("Awake");
+        private static readonly int AngryPropertyId = Animator.StringToHash("Agro");
+        
 
         public ChaseNode(EnemyBTContext context, float angerDistance, float attackDistance)
         {
@@ -21,8 +21,8 @@ namespace Code.Scripts.Enemy
         
         public void OnEnter()
         {
-            _context.Animator.SetTrigger(Awake);
-            _context.Animator.SetBool(AngryPropertyId, true);
+            //_context.Animator.SetTrigger(Awake);
+            _context.Animator.SetFloat(AngryPropertyId, 1);
         }
 
         public BtNodeResult Tick()
@@ -36,7 +36,7 @@ namespace Code.Scripts.Enemy
             if (sqrPlayerDistance > Mathf.Pow(_angerDistance, 2))
             {
                 _context.DetectedPlayer = null;
-                _context.Animator.SetBool(AngryPropertyId, false);
+                _context.Animator.SetFloat(AngryPropertyId, 0);
                 return BtNodeResult.Failure();
             }
 
@@ -52,7 +52,6 @@ namespace Code.Scripts.Enemy
 
         public void OnExit()
         {
-            _context.Animator.ResetTrigger(Awake);
         }
     }
 }
