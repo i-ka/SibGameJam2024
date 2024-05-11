@@ -1,14 +1,16 @@
+using Code.Scripts;
 using UnityEngine;
 using Zenject;
 
 public class TestPlayerInstaller : MonoInstaller
 {
-    [SerializeField]
-    private Transform playerSpawnPosition;
-    [SerializeField]
-    private TestPlayer playerPrefab;
+    [SerializeField] private GameGoalSettings goalSettings;
+    
     public override void InstallBindings()
     {
+        Container.BindInstance(goalSettings).AsSingle();
+        Container.Bind<GameStateController>().FromNew().AsSingle();
+        
         var player = FindAnyObjectByType<TestPlayer>();
         if (!player)
         {
