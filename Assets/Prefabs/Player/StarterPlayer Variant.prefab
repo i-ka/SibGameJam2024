@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rocketLauncher: {fileID: 880824748887009924}
-  _rocketGun: {fileID: 0}
+  _rocketGun: {fileID: 5097726588963736791}
 --- !u!1001 &4131286646709956492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -388,6 +388,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 996ccd9f56ab4db4fbd48fbf3994b29e, type: 3}
+--- !u!114 &5097726588963736791 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 562178644759690122, guid: 996ccd9f56ab4db4fbd48fbf3994b29e, type: 3}
+  m_PrefabInstance: {fileID: 4716255266470459229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13becc33842c1d941a9df84af0af6bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5192291308946941326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 683764578108576467, guid: 996ccd9f56ab4db4fbd48fbf3994b29e, type: 3}
