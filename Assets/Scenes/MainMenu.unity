@@ -1724,6 +1724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsMenu: {fileID: 897705335}
+  startGameSceneName: SemyonTestScene
 --- !u!224 &1498998986
 RectTransform:
   m_ObjectHideFlags: 0
