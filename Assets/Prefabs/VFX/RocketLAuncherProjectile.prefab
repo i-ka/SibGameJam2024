@@ -130,10 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c655ccb4a129e2e4a9b80c94763a19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 4
+  _radius: 20
   _force: 1200
   _playerKnockbackReductionRatio: 15
   _pushesPlayer: 0
+  _damage: 100
 --- !u!1 &4601819631876982371
 GameObject:
   m_ObjectHideFlags: 0

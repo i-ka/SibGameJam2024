@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Code.Scripts.StateMachine;
 using Code.Scripts.StateMachine.BtNodes;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Code.Scripts.Enemy
 
         [SerializeField] private float damage = 2;
         [SerializeField] private Transform playerTransform;
+        
         private NavMeshAgent _navMeshAgent;
         private EnemyBTContext _btContext;
 
@@ -30,7 +32,8 @@ namespace Code.Scripts.Enemy
                 Player = playerTransform,
                 DetectedPlayer = null,
                 Self = transform,
-                NavMeshAgent = _navMeshAgent
+                NavMeshAgent = _navMeshAgent,
+                IsDying = false
             };
 
             var chaseState = new RunBtState<EnemyBTContext>(
@@ -51,6 +54,8 @@ namespace Code.Scripts.Enemy
                 new WaitNode(1)
             )), _btContext);
 
+            var dyingState = new RunBtState<EnemyBTContext>(new RepeatNode(new WaitNode(1)), _btContext);
+
             var stateMachine = new StateMachine<EnemyBTContext>(patrolState, _btContext);
 
             stateMachine.AddTransition(patrolState, chaseState,
@@ -63,8 +68,29 @@ namespace Code.Scripts.Enemy
             
             stateMachine.AddTransition(fightState, chaseState,
                 ctx => !IsPlayerOnAttackDistance(ctx));
+            
+            stateMachine.AddTransition(fightState, dyingState, c => c.IsDying);
+            stateMachine.AddTransition(chaseState, dyingState, c => c.IsDying);
+            stateMachine.AddTransition(patrolState, dyingState, c => c.IsDying);
 
             _stateMachineRunner.StateMachine = stateMachine;
+        }
+
+        public void OnDead()
+        {
+            StartCoroutine(PlayDeadSequence());
+        }
+
+        private IEnumerator PlayDeadSequence()
+        {
+            _btContext.IsDying = true;
+            yield return new WaitForSeconds(0.5f);
+            Destroy(gameObject);
+        }
+
+        public void OnDamaged(float damageGotten)
+        {
+            //todo damage effect
         }
 
         private void OnDestroy()
