@@ -46,6 +46,7 @@ namespace Code.Scripts.Enemy
 
         public void OnExit()
         {
+            _context.NavMeshAgent.ResetPath();
         }
     }
 }

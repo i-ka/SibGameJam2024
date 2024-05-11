@@ -11,6 +11,7 @@ public class HealthComponent : MonoBehaviour
 
     [SerializeField] private UnityEvent<float> healthChanged;
     [SerializeField] private UnityEvent died;
+    [SerializeField] private UnityEvent<float> damaged;
 
     public void Awake()
     {
@@ -25,10 +26,10 @@ public class HealthComponent : MonoBehaviour
 
         CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, MaxHealth) ;
         healthChanged?.Invoke(CurrentHealth / MaxHealth);
+        damaged?.Invoke(damage);
         if (CurrentHealth <= 0)
         {
             died?.Invoke();
-            
         }
     }
 
