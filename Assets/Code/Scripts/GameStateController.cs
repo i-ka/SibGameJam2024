@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Code.Scripts
 {
@@ -9,6 +10,7 @@ namespace Code.Scripts
         
         private readonly GameGoalSettings _goalSettings;
         private int destroyedHives = 0;
+        public bool IsOver { get; private set; } = false;
 
         private GameStateController(GameGoalSettings goalSettings)
         {
@@ -17,7 +19,9 @@ namespace Code.Scripts
 
         public void PlayerDied()
         {
+            IsOver = true;
             GameOver?.Invoke();
+            Debug.Log("Player died. Game over");
         }
 
         public void HiveDestroy()
@@ -25,7 +29,9 @@ namespace Code.Scripts
             destroyedHives++;
             if (destroyedHives >= _goalSettings.CountHivesToDestroy)
             {
+                IsOver = true;
                 GameFinished?.Invoke();
+                Debug.Log("Yapeee!!! Player finished the game");
             }
         }
     }
