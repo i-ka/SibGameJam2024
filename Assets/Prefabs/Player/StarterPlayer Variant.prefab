@@ -136,6 +136,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 790218517465022155, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+      propertyPath: _jetpackEffect
+      value: 
+      objectReference: {fileID: 8505569753105709690}
+    - target: {fileID: 790218517465022155, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
       propertyPath: GroundLayers.m_Bits
       value: 64
       objectReference: {fileID: 0}

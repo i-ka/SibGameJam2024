@@ -30,6 +30,5 @@ public class RocketLauncherShoot : MonoBehaviour
     {
         if (!enabled) return;
         _rocketGun.shoot();
-        _jetpackEffect.SendEvent("OnJump");
     }
 }

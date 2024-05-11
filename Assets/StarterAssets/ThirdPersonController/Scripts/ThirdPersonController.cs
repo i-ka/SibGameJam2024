@@ -1,4 +1,5 @@
 ﻿ using UnityEngine;
+ using UnityEngine.VFX;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -114,6 +115,7 @@ namespace StarterAssets
         private bool _hasAnimator;
 
         private Vector3 _additionalMove;
+        [SerializeField] private VisualEffect _jetpackEffect;
 
         private bool IsCurrentDeviceMouse
         {
@@ -297,7 +299,7 @@ namespace StarterAssets
             {
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
-
+                _jetpackEffect.SendEvent("SmokeOff");
                 // update animator if using character
                 if (_hasAnimator)
                 {
@@ -321,6 +323,7 @@ namespace StarterAssets
                     if (_hasAnimator)
                     {
                         _animator.SetBool(_animIDJump, true);
+                        _jetpackEffect.SendEvent("OnJump");
                     }
                 }
 
@@ -329,6 +332,7 @@ namespace StarterAssets
                 {
                     _jumpTimeoutDelta -= Time.deltaTime;
                 }
+                
             }
             else
             {
@@ -352,6 +356,7 @@ namespace StarterAssets
                 if (_input.jump && _fallTimeoutDelta <= 0.0f)
                 {
                     _rocketLauncherShoot.ShootJetpack();
+                    _jetpackEffect.SendEvent("");
                 }
 
                 // if we are not grounded, do not jump
