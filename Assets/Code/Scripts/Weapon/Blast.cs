@@ -9,6 +9,7 @@ public class Blast : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private float _force;
     [SerializeField] private float _playerKnockbackReductionRatio = 15;
+    [SerializeField] private bool _pushesPlayer = true;
     private float _maxDamage;
 
     public void Explode()
@@ -18,7 +19,7 @@ public class Blast : MonoBehaviour
         foreach (var collider in overLappedColliders)
         {
             Bullet bullet = collider.GetComponent<Bullet>();
-            ThirdPersonController controller = collider.GetComponent<ThirdPersonController>();
+            
             Rigidbody rigidbody = collider.attachedRigidbody;
             if (rigidbody && !bullet)
             {
@@ -48,11 +49,15 @@ public class Blast : MonoBehaviour
                 //    enemy.helth -= damage; // логика урона врагу
                 //}
             }
-            else if (controller)
+            else if (_pushesPlayer)
             {
-                float force = _force / _playerKnockbackReductionRatio;
-                var directionToPlayer = (controller.transform.position - transform.position).normalized;
-                controller.ApplyForce(directionToPlayer * force);
+                ThirdPersonController controller = collider.GetComponent<ThirdPersonController>();
+                if (controller)
+                {
+                    float force = _force / _playerKnockbackReductionRatio;
+                    var directionToPlayer = (controller.transform.position - transform.position).normalized;
+                    controller.ApplyForce(directionToPlayer * force);
+                }
             }
         }
     }
