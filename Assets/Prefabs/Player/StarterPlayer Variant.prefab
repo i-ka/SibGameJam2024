@@ -282,6 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rocketLauncher: {fileID: 880824748887009924}
   _rocketGun: {fileID: 5097726588963736791}
+  _jetpackEffect: {fileID: 8505569753105709690}
 --- !u!114 &6613955744938854484 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9209498028058996267, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
@@ -293,6 +294,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca35ca2862f434b48b1874818a573152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!2083052967 &8505569753105709690 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 5912683963357191173, guid: d1fa2dd8c1a30f545be54e497065fa75, type: 3}
+  m_PrefabInstance: {fileID: 2596263735658145407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4131286646709956492
 PrefabInstance:
   m_ObjectHideFlags: 0
