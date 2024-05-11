@@ -7,6 +7,7 @@ namespace Code.Scripts.MainMenu
 {
     public class InGameMenuController: ITickable
     {
+        private readonly GameStateController _gameStateController;
         private bool _isGameMenuShown;
         public bool IsGameMenuShown
         {
@@ -33,6 +34,11 @@ namespace Code.Scripts.MainMenu
 
         public event Action GameMenuShown;
         public event Action GameMenuHidden;
+
+        public InGameMenuController(GameStateController gameStateController)
+        {
+            _gameStateController = gameStateController;
+        }
         
         public void ToMainMenu()
         {
@@ -41,6 +47,7 @@ namespace Code.Scripts.MainMenu
         
         public void Tick()
         {
+            if (_gameStateController.IsOver) return;
             if (Input.GetKeyUp(KeyCode.Escape))
             {
                 IsGameMenuShown = !IsGameMenuShown;
