@@ -396,12 +396,12 @@ namespace StarterAssets
 
         private void OnFootstep(AnimationEvent animationEvent)
         {
-            return;
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
+                    Debug.Log($"Play step on idnex {index}");
                     AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
             }
@@ -409,7 +409,6 @@ namespace StarterAssets
 
         private void OnLand(AnimationEvent animationEvent)
         {
-            return;
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);

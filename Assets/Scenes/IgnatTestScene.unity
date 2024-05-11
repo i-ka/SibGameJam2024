@@ -1765,6 +1765,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: StarterPlayer Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: FootstepAudioClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: FootstepAudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: de1848644917bc743aa9ffbad39df427, type: 3}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: FootstepAudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: fa95ba964ab53a14f8e3deaedbe6846d, type: 3}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: FootstepAudioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ebbaafb22d670b64b94392c4267d8fbf, type: 3}
+    - target: {fileID: 3382383170422954164, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
+      propertyPath: FootstepAudioClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: be20d0158186426419ec85c8f3ffec5f, type: 3}
     - target: {fileID: 5192291308946941326, guid: ee9062d2350bd27408292517d1ce5f83, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.012
