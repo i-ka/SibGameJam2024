@@ -8,6 +8,9 @@ public class RocketLauncherShoot : MonoBehaviour
     [SerializeField]
     private RocketLauncher _rocketLauncher;
 
+    //this is jetpack!!!
+    [SerializeField] private RocketGun _rocketGun;
+
     private void OnFire()
     {
         _rocketLauncher.Shoot();
@@ -16,5 +19,10 @@ public class RocketLauncherShoot : MonoBehaviour
     private void OnReload()
     {
         _rocketLauncher.Reload();
+    }
+
+    public void ShootJetpack()
+    {
+        _rocketGun.shoot();
     }
 }
