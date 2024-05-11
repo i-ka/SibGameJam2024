@@ -7,11 +7,13 @@ using UnityEngine.AI;
 
 namespace Code.Scripts.Enemy
 {
+    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(StateMachineRunner))]
     public class LavaMultiped : MonoBehaviour
     {
         public event Action<LavaMultiped> OnDestroyed;  
         private StateMachineRunner _stateMachineRunner;
+        private Animator _animator;
 
         [SerializeField] private float damage = 2;
         [SerializeField] private Transform playerTransform;
@@ -21,19 +23,22 @@ namespace Code.Scripts.Enemy
 
         public float angerDistance = 10;
         public float attackDistance = 2;
+        private static readonly int SpeedAnimationPropertyId = Animator.StringToHash("Speed");
+        private static readonly int Death = Animator.StringToHash("Death");
 
         private void Awake()
         {
             _stateMachineRunner = GetComponent<StateMachineRunner>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
-
+            _animator = GetComponent<Animator>();
             _btContext = new EnemyBTContext()
             {
                 Player = playerTransform,
                 DetectedPlayer = null,
                 Self = transform,
                 NavMeshAgent = _navMeshAgent,
-                IsDying = false
+                IsDying = false,
+                Animator = _animator
             };
 
             var chaseState = new RunBtState<EnemyBTContext>(
@@ -76,6 +81,11 @@ namespace Code.Scripts.Enemy
             _stateMachineRunner.StateMachine = stateMachine;
         }
 
+        private void Update()
+        {
+            _animator.SetFloat(SpeedAnimationPropertyId, _navMeshAgent.speed);
+        }
+
         public void OnDead()
         {
             StartCoroutine(PlayDeadSequence());
@@ -83,6 +93,7 @@ namespace Code.Scripts.Enemy
 
         private IEnumerator PlayDeadSequence()
         {
+            _animator.SetTrigger(Death);
             _btContext.IsDying = true;
             yield return new WaitForSeconds(0.5f);
             Destroy(gameObject);
