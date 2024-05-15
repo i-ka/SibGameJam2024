@@ -343,7 +343,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":3.3620920181274416,"g":1.6367080211639405,"b":0.2092597931623459,"a":0.0}'
+      m_SerializableObject: '{"r":95.87452697753906,"g":54.07323455810547,"b":0.0,"a":0.0}'
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -371,7 +371,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":1.0,"g":0.746649444103241,"b":0.0,"a":0.0}'
+      m_SerializableObject: '{"r":97.00586700439453,"g":59.14208984375,"b":0.0,"a":0.0}'
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -12106,7 +12106,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":9.082412719726563,"y":2.837785005569458,"z":0.0}'
+      m_SerializableObject: '{"x":95.87452697753906,"y":54.0732307434082,"z":0.0}'
     m_Space: 2147483647
   m_Property:
     name: Color
@@ -12330,7 +12330,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":3.3620920181274416,"g":1.6367080211639405,"b":0.2092597931623459,"a":0.0}'
+      m_SerializableObject: '{"r":95.87452697753906,"g":54.07323455810547,"b":0.0,"a":0.0}'
     m_Space: 2147483647
   m_Property:
     name: o
@@ -13291,7 +13291,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 30
+      m_SerializableObject: 100
     m_Space: 2147483647
   m_Property:
     name: Count
@@ -13869,7 +13869,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615400}
   - {fileID: 8926484042661615402}
   dataType: 0
-  capacity: 30
+  capacity: 300
   stripCapacity: 1
   particlePerStripCount: 128
   needsComputeBounds: 0
@@ -14062,7 +14062,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":1.0,"y":0.7466493844985962,"z":0.0}'
+      m_SerializableObject: '{"x":73.5167007446289,"y":44.821319580078128,"z":0.0}'
     m_Space: 2147483647
   m_Property:
     name: Color
@@ -14279,7 +14279,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":1.0,"g":0.746649444103241,"b":0.0,"a":0.0}'
+      m_SerializableObject: '{"r":97.00586700439453,"g":59.14208984375,"b":0.0,"a":0.0}'
     m_Space: 2147483647
   m_Property:
     name: o
@@ -14912,7 +14912,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.5
+      m_SerializableObject: 0.2
     m_Space: 2147483647
   m_Property:
     name: A
@@ -14946,7 +14946,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.3
+      m_SerializableObject: 1
     m_Space: 2147483647
   m_Property:
     name: B
@@ -16665,7 +16665,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 3
+      m_SerializableObject: 4
     m_Space: 2147483647
   m_Property:
     name: Size
@@ -17264,7 +17264,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":1.0,"y":1.0,"z":1.0}'
+      m_SerializableObject: '{"x":95.87452697753906,"y":54.0732307434082,"z":0.0}'
     m_Space: 2147483647
   m_Property:
     name: Color
