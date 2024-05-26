@@ -1,22 +1,20 @@
 using System.Collections;
-using System.Diagnostics;
-using System.Text;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using Debug = UnityEngine.Debug;
 
-namespace Code.Scripts.Weapon.RocketLauncher
+namespace Code.Scripts.Weapon
 {
     public class RocketLauncher : MonoBehaviour
     {
         //[SerializeField] private Animator _playerAnim;
 
         [SerializeField] private float _reloadTime = 1;
-        private float _reloadTimer;
         [SerializeField] private int _ammoCount;
         [SerializeField] private int _ammo;
         [SerializeField] private float _delay;
-        private float _shotDelay;
+        [SerializeField] private float _shootCooldown;
         
 
         private bool _isReloadInProgress = false;
@@ -40,24 +38,25 @@ namespace Code.Scripts.Weapon.RocketLauncher
 
         private void Update()
         {
-            if(_shotDelay < _delay)
-            {
-                _shotDelay += Time.deltaTime;
-            }
+            if (_shootCooldown > 0)
+                _shootCooldown -= Time.deltaTime;
         }
 
         public void Shoot()
         {
-            if(!_isReloadInProgress && _shotDelay >= _delay && _ammo > 0)
+            if(!_isReloadInProgress && _shootCooldown <= 0 && _ammo > 0)
             {
                 Instantiate(_bulletPrefab, _bulletPoint.position, _bulletPoint.rotation);
-                _shotDelay = 0;
+                _shootCooldown = _delay;
                 _ammo--;
-                AudioSource.PlayClipAtPoint(shootSound, transform.position);
+                if (shootSound)
+                    AudioSource.PlayClipAtPoint(shootSound, transform.position);
                 AmmoCountChanged?.Invoke(_ammo);
             }
         
         }
+        
+        
 
         public void Reload()
         {
@@ -78,7 +77,8 @@ namespace Code.Scripts.Weapon.RocketLauncher
             {
                 _ammo++;
                 AmmoCountChanged?.Invoke(_ammo);
-                AudioSource.PlayClipAtPoint(reloladSound, transform.position);
+                if (reloladSound)
+                    AudioSource.PlayClipAtPoint(reloladSound, transform.position);
                 yield return new WaitForSeconds(1.0f);
             }
             ReloadEnded?.Invoke();

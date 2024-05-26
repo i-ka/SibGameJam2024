@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Code.Scripts.Weapon.RocketLauncher;
+using Code.Scripts.Weapon;
 using UnityEngine;
 using UnityEngine.VFX;
 
